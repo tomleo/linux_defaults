@@ -52,7 +52,10 @@ set showmatch       " highlight matching braces
 set tabstop=4		" tab width is 4 spaces
 set shiftwidth=4	" indent with 4 spaces
 set expandtab		" expand tabs to spaces
-set textwidth=80    " wrap lines at 80 chars
+set textwidth=74    " wrap lines at 80 chars
+set colorcolumn=+1  " highlight column after 'textwidth'
+"set colorcolumn=80  " highlight column after 80 chars
+highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
 set autoindent      " use indent of previous line
 set smartindent     " use intelligent indentation for C
 set showmatch
@@ -99,6 +102,6 @@ if bufname('') =~# '^\%(' . (v:version < 702 ? 'command-line' : '\[Command Line\
   setlocal nofoldenable
 else
   " Fold settings for ordinary windows.
-  setlocal foldcolumn=4
+  setlocal foldcolumn=1
 endif
 
