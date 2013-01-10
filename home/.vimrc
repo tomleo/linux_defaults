@@ -2,7 +2,7 @@
 " Basic UX Settings
 " =================
 
-cd ~/Dropbox
+cd ~
 
 set go-=m
 set go-=T
@@ -16,6 +16,9 @@ endif
 
 au BufNewFile,BufRead *.txt,*.text  setf text
 
+call pathogen#infect()
+let NERDTreeIgnore = ['\.pyc$']
+
 filetype on
 filetype plugin on
 filetype plugin indent on
@@ -23,6 +26,10 @@ filetype plugin indent on
 nnoremap <C-F1> :if &go=~#'m'<Bar>set go-=m<Bar>else<Bar>set go+=m<Bar>endif<CR>
 nnoremap <C-F2> :if &go=~#'T'<Bar>set go-=T<Bar>else<Bar>set go+=T<Bar>endif<CR>
 nnoremap <C-F3> :if &go=~#'r'<Bar>set go-=r<Bar>else<Bar>set go+=r<Bar>endif<CR>
+
+noremap <silent> <F11> :BufExplorer<CR>
+noremap <silent> <m-F11> :BufExplorerHorizontalSplit<CR>
+noremap <silent> <c-F11> :BufExplorerVerticalSplit<CR>
 
 " modify selected text using combining diacritics
 command! -range -nargs=0 Overline        call s:CombineSelection(<line1>, <line2>, '0305')
@@ -52,12 +59,16 @@ set showmatch       " highlight matching braces
 set tabstop=4		" tab width is 4 spaces
 set shiftwidth=4	" indent with 4 spaces
 set expandtab		" expand tabs to spaces
-set textwidth=74    " wrap lines at 80 chars
-set colorcolumn=+1  " highlight column after 'textwidth'
-"set colorcolumn=80  " highlight column after 80 chars
-highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
+"set textwidth=74    " wrap lines at 80 chars
+"set colorcolumn=+1  " highlight column after 'textwidth'
+set colorcolumn=80  " highlight column after 80 chars
+highlight ColorColumn ctermbg=lightgrey guibg=#888888
 set autoindent      " use indent of previous line
-set smartindent     " use intelligent indentation for C
+
+"" Smart Indent is responsible for making the # tag jump to col0
+" see http://vim.wikia.com/wiki/Restoring_indent_after_typing_hash
+" set smartindent     " use intelligent indentation for C
+" furthermore smartindent has been depreciated in favor of 'cindent'
 set showmatch
 
 " Visualmode is not via CTRL-Q instead of CTRL-V
@@ -74,10 +85,18 @@ set t_Co=256
 syntax on
 "setlocal guifont=Anonymous_Pro:h11
 "setlocal guifont=Anonymous\ Pro\ 11
-setlocal guifont=DejaVu\ Sans\ Mono\ 11
-"colorscheme wombat256mod
+"setlocal guifont=DejaVu\ Sans\ Mono\ 10
+setlocal guifont=Source\ Code\ Pro\ 10
+
 "colorscheme oceanblack
-colorscheme wombat256
+""colorscheme wombat256
+"colorscheme kate
+if has('gui_running')
+    colorscheme wombat256mod
+    map <D-S-LEFT> <C-w>W
+else
+    colorscheme wombat
+endif
 
 " intelligent comments
 set comments=s1:/*,mb:\ ",elx:\ */
@@ -88,6 +107,10 @@ filetype plugin on
 set tags+=~/.vim/tags/cpp
 " will recursively build a ctags database from the current directory
 map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 
 " DoxygenToolkit
 let g:DoxygenToolkit_authorName="Tom Leo <tom@tomleo.com>"
@@ -104,4 +127,3 @@ else
   " Fold settings for ordinary windows.
   setlocal foldcolumn=1
 endif
-
