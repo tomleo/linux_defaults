@@ -15,12 +15,16 @@ if has('autocmd')
 endif
 
 au BufNewFile,BufRead *.txt,*.text  setf text
+au BufNewFile,BufRead *.haml,*.hamlbars setf haml
 
+filetype off
 call pathogen#infect()
 let NERDTreeIgnore = ['\.pyc$']
 
-filetype on
-filetype plugin on
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:ctrlp_map = '<c-p>'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip 
+
 filetype plugin indent on
 
 nnoremap <C-F1> :if &go=~#'m'<Bar>set go-=m<Bar>else<Bar>set go+=m<Bar>endif<CR>
@@ -62,7 +66,10 @@ set expandtab		" expand tabs to spaces
 "set textwidth=74    " wrap lines at 80 chars
 "set colorcolumn=+1  " highlight column after 'textwidth'
 set colorcolumn=80  " highlight column after 80 chars
-highlight ColorColumn ctermbg=lightgrey guibg=#888888
+
+" See http://stackoverflow.com/a/235970/465270
+highlight colorcolumn ctermbg=lightgrey guibg=#888888
+highlight OverLength ctermbg=lightgrey ctermfg=black guibg=#888888
 set autoindent      " use indent of previous line
 
 "" Smart Indent is responsible for making the # tag jump to col0
@@ -127,3 +134,5 @@ else
   " Fold settings for ordinary windows.
   setlocal foldcolumn=1
 endif
+
+let g:pymode_lint_cwindow = 0
