@@ -6,7 +6,7 @@ cd ~
 
 set go-=m
 set go-=T
-set go-=r
+"set go-=r
 
 set t_vb=
 set noeb vb t_vb=
@@ -92,14 +92,15 @@ set t_Co=256
 syntax on
 "setlocal guifont=Anonymous_Pro:h11
 "setlocal guifont=Anonymous\ Pro\ 11
-"setlocal guifont=DejaVu\ Sans\ Mono\ 10
-setlocal guifont=Source\ Code\ Pro\ 10
+setlocal guifont=DejaVu\ Sans\ Mono\ 10
+"setlocal guifont=Source\ Code\ Pro\ 10
 
 "colorscheme oceanblack
 ""colorscheme wombat256
 "colorscheme kate
 if has('gui_running')
-    colorscheme wombat256mod
+    "colorscheme wombat256mod
+    colorscheme pyte
     map <D-S-LEFT> <C-w>W
 else
     colorscheme wombat
