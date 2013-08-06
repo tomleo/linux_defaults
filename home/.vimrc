@@ -23,6 +23,8 @@ let NERDTreeIgnore = ['\.pyc$']
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip 
 
 filetype plugin indent on
@@ -34,6 +36,13 @@ nnoremap <C-F3> :if &go=~#'r'<Bar>set go-=r<Bar>else<Bar>set go+=r<Bar>endif<CR>
 noremap <silent> <F11> :BufExplorer<CR>
 noremap <silent> <m-F11> :BufExplorerHorizontalSplit<CR>
 noremap <silent> <c-F11> :BufExplorerVerticalSplit<CR>
+
+map <C-J> :bnext<CR>
+map <C-K> :bprev<CR>
+
+"Move between windows easily
+"map <C-H> :wincmd<C-J> <C-W>j
+"map <C-L> :wincmd<C-K> <C-W>k
 
 " modify selected text using combining diacritics
 command! -range -nargs=0 Overline        call s:CombineSelection(<line1>, <line2>, '0305')
@@ -67,9 +76,12 @@ set expandtab		" expand tabs to spaces
 "set colorcolumn=+1  " highlight column after 'textwidth'
 set colorcolumn=80  " highlight column after 80 chars
 
+
 " See http://stackoverflow.com/a/235970/465270
-highlight colorcolumn ctermbg=lightgrey guibg=#888888
-highlight OverLength ctermbg=lightgrey ctermfg=black guibg=#888888
+"highlight colorcolumn ctermbg=lightgrey guibg=#888888
+"highlight OverLength ctermbg=lightgrey ctermfg=black guibg=#888888
+highlight ColorColumn ctermbg=233
+
 set autoindent      " use indent of previous line
 
 "" Smart Indent is responsible for making the # tag jump to col0
@@ -99,8 +111,8 @@ setlocal guifont=DejaVu\ Sans\ Mono\ 10
 ""colorscheme wombat256
 "colorscheme kate
 if has('gui_running')
-    "colorscheme wombat256mod
-    colorscheme pyte
+    colorscheme wombat256mod
+    "colorscheme pyte
     map <D-S-LEFT> <C-w>W
 else
     colorscheme wombat
@@ -137,3 +149,16 @@ else
 endif
 
 let g:pymode_lint_cwindow = 0
+
+set hlsearch
+set incsearch " start searching when you type the first character of the search string
+set ignorecase
+
+set tw=79 " width of document (used by gd)
+set fo-=t " don't automatically wrap text when typing
+
+map <C-H> <C-W>h<C-W>h
+map <C-L> <C-W>l<C-W>l
+nmap <c-j> <c-w>j<c-w>j
+nmap <c-k> <c-w>k<c-w>k
+

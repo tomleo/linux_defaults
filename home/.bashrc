@@ -1,8 +1,9 @@
 # My Aliases
 alias l="ls -l"
 alias xclip="xclip -selection c"
-alias dir="pwd | xclip"
+alias dir="pwd | tr -d '\n' | xclip"
 alias esenv="source /home/tom/energysage/ENV/bin/activate"
+alias git-gui="git-cola"
 
 # append commands to the history
 shopt -s histappend
