@@ -19,13 +19,19 @@ au BufNewFile,BufRead *.haml,*.hamlbars setf haml
 
 filetype off
 call pathogen#infect()
-let NERDTreeIgnore = ['\.pyc$']
+let NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__']
+let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
+let NERDTreeShowBookmarks=1
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|tox)$'
+let g:ctrlp_user_command = "find %s -type f | grep -Ev '"+ g:ctrlp_custom_ignore +"'"
+let g:ctrlp_use_caching = 0
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip 
+let g:ctrlp_root_markers = '/home/tom/energysage/'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
 
 filetype plugin indent on
 
@@ -74,13 +80,21 @@ set shiftwidth=4	" indent with 4 spaces
 set expandtab		" expand tabs to spaces
 "set textwidth=74    " wrap lines at 80 chars
 "set colorcolumn=+1  " highlight column after 'textwidth'
-set colorcolumn=80  " highlight column after 80 chars
+"set colorcolumn=99  " highlight column after 80 chars
+
+set textwidth=0 wrapmargin=0
+set nowrap
+
 
 
 " See http://stackoverflow.com/a/235970/465270
 "highlight colorcolumn ctermbg=lightgrey guibg=#888888
 "highlight OverLength ctermbg=lightgrey ctermfg=black guibg=#888888
-highlight ColorColumn ctermbg=233
+"highlight ColorColumn ctermbg=233
+"====[ Make the 81st column stand out ]====================
+    " just the 100th column of wide lines...
+    highlight ColorColumn ctermbg=magenta
+    call matchadd('ColorColumn', '\%81v', 120)
 
 set autoindent      " use indent of previous line
 
@@ -90,10 +104,6 @@ set autoindent      " use indent of previous line
 " furthermore smartindent has been depreciated in favor of 'cindent'
 set showmatch
 
-" Visualmode is not via CTRL-Q instead of CTRL-V
-source $VIMRUNTIME/mswin.vim
-behave mswin
-
 " ========
 " Add-on's
 " ========
@@ -102,9 +112,10 @@ behave mswin
 " syntax highlighting on
 set t_Co=256
 syntax on
+"set guifont=DejaVu\ Sans\ Mono\ 9
+set guifont=Inconsolata\ Medium\ 9
 "setlocal guifont=Anonymous_Pro:h11
-"setlocal guifont=Anonymous\ Pro\ 11
-setlocal guifont=DejaVu\ Sans\ Mono\ 10
+"setlocal guifont=Anonymous\ Pro\ 9
 "setlocal guifont=Source\ Code\ Pro\ 10
 
 "colorscheme oceanblack
@@ -112,6 +123,9 @@ setlocal guifont=DejaVu\ Sans\ Mono\ 10
 "colorscheme kate
 if has('gui_running')
     colorscheme wombat256mod
+    setlocal guifont=Inconsolata\ Medium\ 9
+    "setlocal guifont=DejaVu\ Sans\ Mono\ 9
+    "setlocal guifont=Anonymous\ Pro\ 9
     "colorscheme pyte
     map <D-S-LEFT> <C-w>W
 else
@@ -154,11 +168,85 @@ set hlsearch
 set incsearch " start searching when you type the first character of the search string
 set ignorecase
 
-set tw=79 " width of document (used by gd)
-set fo-=t " don't automatically wrap text when typing
-
 map <C-H> <C-W>h<C-W>h
 map <C-L> <C-W>l<C-W>l
 nmap <c-j> <c-w>j<c-w>j
 nmap <c-k> <c-w>k<c-w>k
 
+let jshint2_save = 0
+
+"====[ Swap : and ; to make colon commands easier to type ]======
+
+    nnoremap  ;  :
+    nnoremap  :  ;
+
+"====[ Copy to Clipboard ]====
+" Visualmode is not via CTRL-Q instead of CTRL-V
+source $VIMRUNTIME/mswin.vim
+behave mswin
+"vmap <C-c> "+y
+"vmap <C-x> "+c
+"vmap <C-v> c<ESC>"+p
+"imap <C-v> <C-r><C-o>+
+set clipboard^=unnamed
+
+"====[ Drag Visual Plugin ]====
+runtime plugin/dragvisuals.vim 
+vmap  <expr>  <LEFT>   DVB_Drag('left')
+vmap  <expr>  <RIGHT>  DVB_Drag('right')
+vmap  <expr>  <DOWN>   DVB_Drag('down')
+vmap  <expr>  <UP>     DVB_Drag('up') 
+vmap  <expr>  D        DVB_Duplicate() 
+
+" Remove any introduced trailing whitespace after moving...
+let g:DVB_TrimWS = 1
+
+
+"====[ Open Current line on GitHub ]====
+noremap ,o :!echo `git url`/blob/`git rev-parse --abbrev-ref HEAD`/%\#L<C-R>=line('.')<CR> \| xargs open<CR><CR>
+
+
+"====[ Custom Python things ]====
+"autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8 colorcolumn=99
+"   \ formatoptions+=croq softtabstop=4 smartindent
+"   \ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
+
+
+"====[ Jedi-vim ]====
+let g:jedi#popup_on_dot = 0
+let g:jedi#goto_assignments_command = "<leader>g"
+let g:jedi#goto_definitions_command = "<leader>d"
+let g:jedi#documentation_command = "K"
+let g:jedi#usages_command = "<leader>n"
+let g:jedi#rename_command = "<leader>r"
+let g:jedi#show_call_signatures = "0"
+let g:jedi#completions_command = "<C-Space>"
+
+
+set ttyfast
+set binary
+
+
+"" Disable the blinking cursor.
+set gcr=a:blinkon0
+set scrolloff=3
+
+set title
+set titleold="Terminal"
+set titlestring=%F
+
+
+let g:airline_theme = 'powerlineish'
+let g:airline_enable_branch = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+
+set expandtab
+
+
+
+
+set tabstop=4		" tab width is 4 spaces
+set shiftwidth=4	" indent with 4 spaces
+set expandtab		" expand tabs to spaces
