@@ -94,7 +94,7 @@ set nowrap
 "====[ Make the 81st column stand out ]====================
     " just the 100th column of wide lines...
     highlight ColorColumn ctermbg=magenta
-    call matchadd('ColorColumn', '\%81v', 120)
+    call matchadd('ColorColumn', '\%99v', 119)
 
 set autoindent      " use indent of previous line
 
@@ -210,6 +210,8 @@ noremap ,o :!echo `git url`/blob/`git rev-parse --abbrev-ref HEAD`/%\#L<C-R>=lin
 "autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8 colorcolumn=99
 "   \ formatoptions+=croq softtabstop=4 smartindent
 "   \ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
+autocmd FileType python setlocal formatoptions+=croq 
+    \ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
 
 
 "====[ Jedi-vim ]====
@@ -242,11 +244,20 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 
-set expandtab
-
-
-
 
 set tabstop=4		" tab width is 4 spaces
 set shiftwidth=4	" indent with 4 spaces
 set expandtab		" expand tabs to spaces
+
+
+au BufNewFile,BufRead *.lg set filetype=worklogfile
+autocmd FileType worklogfile setlocal guifont=DejaVu\ Sans\ Mono\ 9 tabstop=2 shiftwidth=2 expandtab
+
+
+
+""" vim-notes
+let g:notes_directories = ['~/work/notes/']
+let g:notes_suffix = '.note'
+let g:notes_smart_quotes = 1
+
+
