@@ -90,7 +90,7 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
 alias ll='ls -alF'
@@ -120,3 +120,20 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+
+if [ -f ~/.bash_secrets ]; then
+    . ~/.bash_secrets
+fi
+
+export PATH=$PATH:/usr/local/bin
+export PATH=$PATH:/opt/sublime_text_3/
+
+# ---- Encrypted Directory ---- #
+alias openvault="openssl enc -aes-256-cbc -d -in ~/vault.tar.gz.dat | tar xz; thunar ~/vault"
+alias closevault="tar cz vault/ | openssl enc -aes-256-cbc -out ~/vault.tar.gz.dat; rm -r ~/vault"
+
+
+
+
+
