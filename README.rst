@@ -3,6 +3,11 @@ Linux Defaults
 
 vimrc, bashrc, ect. I guess the popular term nowadays is dot files.
 
+Powerlines
+----------
+
+Basically followed the steps here http://askubuntu.com/a/283909
+
 Vim Notes
 ---------
 

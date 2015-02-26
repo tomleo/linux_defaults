@@ -129,11 +129,12 @@ fi
 export PATH=$PATH:/usr/local/bin
 export PATH=$PATH:/opt/sublime_text_3/
 
-# ---- Encrypted Directory ---- #
-alias openvault="openssl enc -aes-256-cbc -d -in ~/vault.tar.gz.dat | tar xz; thunar ~/vault"
-alias closevault="tar cz vault/ | openssl enc -aes-256-cbc -out ~/vault.tar.gz.dat; rm -r ~/vault"
-
-
-
-
+# Power Lines Configuration
+if [ -d "$HOME/.local/bin" ]; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+export POWERLINE_COMMAND=powerline
+if [ -f ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh ]; then
+    source ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
+fi
 

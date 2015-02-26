@@ -22,6 +22,7 @@ Plugin 'mrtazz/DoxygenToolkit.vim'
 Plugin 'shinokada/dragvisuals.vim'
 Plugin 'vim-scripts/spacehi.vim'
 Plugin 'vim-scripts/taglist.vim'
+Plugin 'tpope/vim-obsession.git'
 call vundle#end()
 
 " ==============
@@ -140,7 +141,7 @@ set comments=s1:/*,mb:\ ",elx:\ */ " intelligent comments
 
     au FileType python setlocal formatoptions+=croq 
         \ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
-    au FileType worklogfile setlocal guifont=DejaVu\ Sans\ Mono\ 9 tabstop=2 shiftwidth=2 expandtab
+    au FileType worklogfile setlocal guifont=Ubuntu\ Mono\ 10 tabstop=4 shiftwidth=4 expandtab
 
 
 "====[ Disable Beeping ]===="
@@ -200,6 +201,14 @@ vmap  <expr>  <UP>     DVB_Drag('up')
 vmap  <expr>  D        DVB_Duplicate() 
 let g:DVB_TrimWS = 1 " Remove any introduced trailing whitespace after moving...
 
+" rking/ag
+if executable('ag')
+    " Note we extract the column as well as the file and line number
+    set grepprg=ag\ --nogroup\ --nocolor\ --column
+    set grepformat=%f:%l:%c%m
+endif
+let g:ag_prg="ag --column"
+
 
 " ===========
 " Custom Code
@@ -243,4 +252,14 @@ let g:DVB_TrimWS = 1 " Remove any introduced trailing whitespace after moving...
     autocmd FileType css set omnifunc=csscomplete#CompleteCSS
     """ ctags related stuff
     nmap <F8> :TagbarToggle<CR>
+
+
+"====[ Powerline ]===="
+" 
+" set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
+" set laststatus=2
+"
+" Fonts seem to not work corrently look into this later
+"
+
 

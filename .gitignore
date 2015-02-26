@@ -13,5 +13,7 @@ home/.vim/bundle/taglist.vim/
 home/.vim/bundle/vim-css-color/
 home/.vim/bundle/vim-css3-syntax/
 home/.vim/bundle/vim-tmux-navigator/
+home/.vim/bundle/vim-obsession/
 home/.vim/.netrwhist
 /home/.bash_secrets
+*.swp
