@@ -12,17 +12,12 @@ Plugin 'jlanzarotta/bufexplorer'
 Plugin 'kien/ctrlp.vim'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'tmhedberg/SimpylFold'
+Plugin 'tmhedberg/SimpylFold' " Python Code Folding
 Plugin 'majutsushi/tagbar'
 Plugin 'skammer/vim-css-color'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'rbgrouleff/bclose.vim'
-Plugin 'mrtazz/DoxygenToolkit.vim'
-Plugin 'shinokada/dragvisuals.vim'
-Plugin 'vim-scripts/spacehi.vim'
-Plugin 'vim-scripts/taglist.vim'
-Plugin 'tpope/vim-obsession.git'
+Plugin 'vim-scripts/taglist.vim' " source code browser plugin
 call vundle#end()
 
 " ==============
@@ -37,9 +32,6 @@ set scrolloff=3     " 3 lines visible above below the cursor
 set title
 set titleold="Terminal"
 set titlestring=%F
-set tabstop=4		" tab width is 4 spaces
-set shiftwidth=4	" indent with 4 spaces
-set expandtab		" expand tabs to spaces
 set hlsearch
 set incsearch " start searching when you type the first character of the search string
 set ignorecase
@@ -51,9 +43,6 @@ map <C-J> :bnext<CR>
 map <C-K> :bprev<CR>
 set nowrap
 set showmatch       " highlight matching braces
-set tabstop=4		" tab width is 4 spaces
-set shiftwidth=4	" indent with 4 spaces
-set expandtab		" expand tabs to spaces
 set autoindent      " use indent of previous line
 set textwidth=0 wrapmargin=0
 set nocp
@@ -97,32 +86,17 @@ set comments=s1:/*,mb:\ ",elx:\ */ " intelligent comments
     "set guifont=Anonymous_Pro:h11
     "set guifont=Anonymous\ Pro\ 9
     "set guifont=Source\ Code\ Pro\ 10
-    "colorscheme oceanblack
-    "colorscheme wombat256
-    "colorscheme kate
-    "colorscheme pyte
-    "colorscheme eclipse
     if has('gui_running')
         colorscheme wombat256mod
+        "colorscheme oceanblack
+        "colorscheme wombat256
+        "colorscheme kate
+        "colorscheme pyte
+        "colorscheme eclipse
         setlocal guifont=Inconsolata\ Medium\ 9
         map <D-S-LEFT> <C-w>W
     else
         colorscheme wombat
-    endif
-
-"====[ UI Settings - Code Folding ]===="
-
-    " VIM's command window ('q:') and the :options window also set filetype=vim. We
-    " do not want folding in these enabled by default, though, because some
-    " malformed :if, :function, ... commands would fold away everything from the
-    " malformed command until the last command.
-    if bufname('') =~# '^\%(' . (v:version < 702 ? 'command-line' : '\[Command Line\]') . '\|option-window\)$'
-      " With this, folding can still be enabled easily via any zm, zc, zi, ...
-      " command.
-      setlocal nofoldenable
-    else
-      " Fold settings for ordinary windows.
-      setlocal foldcolumn=1
     endif
 
 "====[ Swap : and ; to make colon commands easier to type ]======"
@@ -132,15 +106,14 @@ set comments=s1:/*,mb:\ ",elx:\ */ " intelligent comments
 
 "====[ File type settings ]===="
 
-    filetype plugin on
     filetype plugin indent on
 
     au BufNewFile,BufRead *.txt,*.text  setf text
     au BufNewFile,BufRead *.haml,*.hamlbars setf haml
     au BufNewFile,BufRead *.lg setf worklogfile
 
-    au FileType python setlocal formatoptions+=croq 
-        \ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
+    "au FileType python setlocal formatoptions+=croq 
+    "    \ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
     au FileType worklogfile setlocal guifont=Ubuntu\ Mono\ 10 tabstop=4 shiftwidth=4 expandtab
 
 
@@ -151,8 +124,6 @@ set comments=s1:/*,mb:\ ",elx:\ */ " intelligent comments
     if has('autocmd')
         autocmd GUIEnter * set vb t_vb=
     endif
-
-
 
 " =====================
 " Basic Plugin Settings
@@ -188,18 +159,6 @@ let g:jedi#usages_command = "<leader>n"
 let g:jedi#rename_command = "<leader>r"
 let g:jedi#show_call_signatures = "0"
 let g:jedi#completions_command = "<C-Space>"
-
-" mrtazz/DoxygenToolkit.vim
-let g:DoxygenToolkit_authorName="Tom Leo <tom@tomleo.com>"
-
-" shinokada/dragvisuals.vim
-runtime plugin/dragvisuals.vim 
-vmap  <expr>  <LEFT>   DVB_Drag('left')
-vmap  <expr>  <RIGHT>  DVB_Drag('right')
-vmap  <expr>  <DOWN>   DVB_Drag('down')
-vmap  <expr>  <UP>     DVB_Drag('up') 
-vmap  <expr>  D        DVB_Duplicate() 
-let g:DVB_TrimWS = 1 " Remove any introduced trailing whitespace after moving...
 
 " rking/ag
 if executable('ag')
@@ -240,26 +199,20 @@ let g:ag_prg="ag --column"
     highlight ColorColumn ctermbg=magenta
     call matchadd('ColorColumn', '\%99v', 119)
 
-"====[ TODO ]===="
-
-    " OmniCPPComplete
-    set tags+=~/.vim/tags/cpp
-    " will recursively build a ctags database from the current directory
-    map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
-    autocmd FileType python set omnifunc=pythoncomplete#Complete
-    autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-    autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-    autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-    """ ctags related stuff
-    nmap <F8> :TagbarToggle<CR>
-
-
 "====[ Powerline ]===="
 " 
 " set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
 " set laststatus=2
 "
 " Fonts seem to not work corrently look into this later
-"
 
+
+"====[ Basic Styling END ]===="
+
+    " For some reason VIM will change spaces to tabs, I'm not sure where the
+    " offending vimscript code is
+
+    set tabstop=4		" tab width is 4 spaces
+    set shiftwidth=4	" indent with 4 spaces
+    set expandtab		" always uses spaces instead of tab characters
 
