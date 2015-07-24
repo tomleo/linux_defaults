@@ -138,3 +138,12 @@ if [ -f ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.s
     source ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
 fi
 
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+# Android SDK
+export PATH=$PATH:/usr/local/android-sdk-linux/
+export PATH=$PATH:/usr/local/android-sdk-linux/tools
+export PATH=$PATH:/usr/local/android-sdk-linux/platform-tools
+export PATH=$PATH:/usr/local/android-sdk-linux/build-tools

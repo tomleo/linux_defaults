@@ -18,6 +18,14 @@ Plugin 'skammer/vim-css-color'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'vim-scripts/taglist.vim' " source code browser plugin
+Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'bkad/CamelCaseMotion'
+Plugin 'Keithbsmiley/investigate.vim'
+Plugin 'chriskempson/base16-vim'
+Plugin 'amoffat/snake'
+Plugin 'NLKNguyen/papercolor-theme'
+Plugin 'kristijanhusak/vim-hybrid-material'
+Plugin 'Valloric/YouCompleteMe'
 call vundle#end()
 
 " ==============
@@ -81,28 +89,38 @@ set comments=s1:/*,mb:\ ",elx:\ */ " intelligent comments
 
     syntax on
     set t_Co=256
+    
+    " Base16 Settings
+    let base16colorspace=256 " Access colors present in 256 colorspace
+    set background=dark
+
     set guifont=Inconsolata\ Medium\ 9
     "set guifont=DejaVu\ Sans\ Mono\ 9
     "set guifont=Anonymous_Pro:h11
     "set guifont=Anonymous\ Pro\ 9
     "set guifont=Source\ Code\ Pro\ 10
     if has('gui_running')
-        colorscheme wombat256mod
+        "colorscheme wombat256mod
         "colorscheme oceanblack
         "colorscheme wombat256
         "colorscheme kate
         "colorscheme pyte
         "colorscheme eclipse
-        setlocal guifont=Inconsolata\ Medium\ 9
+        "colorscheme PaperColor
+        let g:enable_bold_font = 1
+        colorscheme hybrid_material
         map <D-S-LEFT> <C-w>W
     else
-        colorscheme wombat
+        colorscheme wombat256mod
     endif
+
+
 
 "====[ Swap : and ; to make colon commands easier to type ]======"
 
     nnoremap  ;  :
     nnoremap  :  ;
+
 
 "====[ File type settings ]===="
 
@@ -134,6 +152,13 @@ let NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache_
 let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
 let NERDTreeShowBookmarks=1
 
+" youcompleteme
+let g:ycm_collect_identifiers_from_tags_files = 1 " Let YCM read tags from Ctags file
+let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
+let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
+let g:ycm_complete_in_comments = 1 " Completion in comments
+let g:ycm_complete_in_strings = 1 " Completion in string
+
 " kien/ctrlp.vim
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|tox)$'
@@ -163,10 +188,21 @@ let g:jedi#completions_command = "<C-Space>"
 " rking/ag
 if executable('ag')
     " Note we extract the column as well as the file and line number
-    set grepprg=ag\ --nogroup\ --nocolor\ --column
+    set grepprg=ag\ --nogroup\ --nocolor\ -v
     set grepformat=%f:%l:%c%m
 endif
-let g:ag_prg="ag --column"
+let g:ag_prg="ag -v"
+
+" Keithbsmiley/investigate.vim
+let g:investigate_use_dash=1
+let g:investigate_command_for_python = '/usr/bin/zeal --query ^s'
+
+" majutsushi/tagbar
+nmap <F8> :TagbarToggle<CR>
+
+
+" taglist
+left g:Tlist_Ctags_Cmd = '/usr/bin/ctags'
 
 
 " ===========
@@ -196,8 +232,12 @@ let g:ag_prg="ag --column"
     "highlight ColorColumn ctermbg=233
 
     " just the 100th column of wide lines...
-    highlight ColorColumn ctermbg=magenta
-    call matchadd('ColorColumn', '\%99v', 119)
+    "highlight ColorColumn ctermbg=magenta
+    "call matchadd('ColorColumn', '\%99v', 119)
+
+    highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+    match OverLength /\%100v.\+/
+
 
 "====[ Powerline ]===="
 " 
