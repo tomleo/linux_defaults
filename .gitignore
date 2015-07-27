@@ -14,6 +14,15 @@ home/.vim/bundle/vim-css-color/
 home/.vim/bundle/vim-css3-syntax/
 home/.vim/bundle/vim-tmux-navigator/
 home/.vim/bundle/vim-obsession/
+home/.vim/bundle/CamelCaseMotion/
+home/.vim/bundle/YouCompleteMe/
+home/.vim/bundle/base16-vim/
+home/.vim/bundle/investigate.vim/
+home/.vim/bundle/papercolor-theme/
+home/.vim/bundle/snake/
+home/.vim/bundle/vim-hybrid-material/
+home/.vim/bundle/vim-mustache-handlebars/
+
 home/.vim/.netrwhist
 /home/.bash_secrets
 *.swp

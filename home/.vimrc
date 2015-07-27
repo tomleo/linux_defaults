@@ -201,8 +201,10 @@ let g:investigate_command_for_python = '/usr/bin/zeal --query ^s'
 nmap <F8> :TagbarToggle<CR>
 
 
-" taglist
+" vim-scripts/taglist.vim
 left g:Tlist_Ctags_Cmd = '/usr/bin/ctags'
+nnoremap <silent> <F8> :TlistToggle<CR>
+let Tlist_Use_Right_Window = 1
 
 
 " ===========
