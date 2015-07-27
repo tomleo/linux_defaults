@@ -15,3 +15,5 @@ alias openvault="openssl enc -aes-256-cbc -d -in ~/vault.tar.gz.dat | tar xz; th
 alias closevault="tar cz vault/ | openssl enc -aes-256-cbc -out ~/vault.tar.gz.dat; rm -r ~/vault"
 
 alias work="cd /home/tom/work/ && ./log_today"
+
+alias drive=drive-linux-amd64
