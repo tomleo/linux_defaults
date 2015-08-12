@@ -22,7 +22,10 @@ home/.vim/bundle/papercolor-theme/
 home/.vim/bundle/snake/
 home/.vim/bundle/vim-hybrid-material/
 home/.vim/bundle/vim-mustache-handlebars/
-
+home/.vim/bundle/InstantRst/
+home/.vim/bundle/restore_view.vim/
+home/.vim/bundle/riv.vim/
+home/.vim/view/
 home/.vim/.netrwhist
 /home/.bash_secrets
 *.swp

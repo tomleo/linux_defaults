@@ -26,6 +26,9 @@ Plugin 'amoffat/snake'
 Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'kristijanhusak/vim-hybrid-material'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'vim-scripts/restore_view.vim'
+Plugin 'Rykka/riv.vim'
+Plugin 'Rykka/InstantRst'
 call vundle#end()
 
 " ==============
@@ -105,10 +108,10 @@ set comments=s1:/*,mb:\ ",elx:\ */ " intelligent comments
         "colorscheme wombat256
         "colorscheme kate
         "colorscheme pyte
-        "colorscheme eclipse
+        colorscheme eclipse
         "colorscheme PaperColor
         let g:enable_bold_font = 1
-        colorscheme hybrid_material
+        "colorscheme hybrid_material
         map <D-S-LEFT> <C-w>W
     else
         colorscheme wombat256mod
@@ -205,6 +208,10 @@ nmap <F8> :TagbarToggle<CR>
 left g:Tlist_Ctags_Cmd = '/usr/bin/ctags'
 nnoremap <silent> <F8> :TlistToggle<CR>
 let Tlist_Use_Right_Window = 1
+let Tlist_WinWidth = 50 "This works well for longer Class and Function names
+
+" vim-scripts/restore_view.vim
+set viewoptions=cursor,folds,slash,unix
 
 
 " ===========
@@ -237,8 +244,8 @@ let Tlist_Use_Right_Window = 1
     "highlight ColorColumn ctermbg=magenta
     "call matchadd('ColorColumn', '\%99v', 119)
 
-    highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-    match OverLength /\%100v.\+/
+    "highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+    "match OverLength /\%100v.\+/
 
 
 "====[ Powerline ]===="
@@ -247,6 +254,7 @@ let Tlist_Use_Right_Window = 1
 " set laststatus=2
 "
 " Fonts seem to not work corrently look into this later
+let g:Powerline_symbols = 'fancy'
 
 
 "====[ Basic Styling END ]===="
