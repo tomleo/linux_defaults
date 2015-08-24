@@ -29,6 +29,7 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-scripts/restore_view.vim'
 Plugin 'Rykka/riv.vim'
 Plugin 'Rykka/InstantRst'
+Plugin 'vim-scripts/SeeTab'
 call vundle#end()
 
 " ==============
@@ -116,7 +117,6 @@ set comments=s1:/*,mb:\ ",elx:\ */ " intelligent comments
     else
         colorscheme wombat256mod
     endif
-
 
 
 "====[ Swap : and ; to make colon commands easier to type ]======"

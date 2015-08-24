@@ -27,5 +27,6 @@ home/.vim/bundle/restore_view.vim/
 home/.vim/bundle/riv.vim/
 home/.vim/view/
 home/.vim/.netrwhist
-/home/.bash_secrets
+home/.bash_secrets
+home/.vim/bundle/SeeTab/
 *.swp
