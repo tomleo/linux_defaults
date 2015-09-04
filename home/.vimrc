@@ -27,8 +27,8 @@ Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'kristijanhusak/vim-hybrid-material'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-scripts/restore_view.vim'
-Plugin 'Rykka/riv.vim'
-Plugin 'Rykka/InstantRst'
+"Plugin 'Rykka/riv.vim'
+"Plugin 'Rykka/InstantRst'
 Plugin 'vim-scripts/SeeTab'
 call vundle#end()
 
@@ -104,12 +104,12 @@ set comments=s1:/*,mb:\ ",elx:\ */ " intelligent comments
     "set guifont=Anonymous\ Pro\ 9
     "set guifont=Source\ Code\ Pro\ 10
     if has('gui_running')
-        "colorscheme wombat256mod
+        colorscheme wombat256mod
         "colorscheme oceanblack
         "colorscheme wombat256
         "colorscheme kate
         "colorscheme pyte
-        colorscheme eclipse
+        "colorscheme eclipse
         "colorscheme PaperColor
         let g:enable_bold_font = 1
         "colorscheme hybrid_material
@@ -212,6 +212,9 @@ let Tlist_WinWidth = 50 "This works well for longer Class and Function names
 
 " vim-scripts/restore_view.vim
 set viewoptions=cursor,folds,slash,unix
+
+" Rykka/riv.vim
+" g:riv_disable_folding
 
 
 " ===========
