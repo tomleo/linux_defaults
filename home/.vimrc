@@ -115,6 +115,7 @@ set comments=s1:/*,mb:\ ",elx:\ */ " intelligent comments
         "colorscheme hybrid_material
         map <D-S-LEFT> <C-w>W
     else
+        set autochdir " directory to match the open file when editing in a terminal
         colorscheme wombat256mod
     endif
 
