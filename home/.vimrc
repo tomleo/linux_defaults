@@ -147,6 +147,15 @@ set comments=s1:/*,mb:\ ",elx:\ */ " intelligent comments
         autocmd GUIEnter * set vb t_vb=
     endif
 
+"====[ Tmux Integration ]===="
+let g:tmux_navigator_no_mappings = 1
+nnoremap <silent> {Left-mapping} :TmuxNavigateLeft<cr>
+nnoremap <silent> {Down-Mapping} :TmuxNavigateDown<cr>
+nnoremap <silent> {Up-Mapping} :TmuxNavigateUp<cr>
+nnoremap <silent> {Right-Mapping} :TmuxNavigateRight<cr>
+nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
+let g:tmux_navigator_save_on_switch = 1  " Auto-save when leaving pane
+
 " =====================
 " Basic Plugin Settings
 " =====================
