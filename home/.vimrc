@@ -27,9 +27,8 @@ Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'kristijanhusak/vim-hybrid-material'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-scripts/restore_view.vim'
-"Plugin 'Rykka/riv.vim'
-"Plugin 'Rykka/InstantRst'
 Plugin 'vim-scripts/SeeTab'
+Plugin 'tpope/vim-fireplace.git'
 call vundle#end()
 
 " ==============
@@ -137,6 +136,7 @@ set comments=s1:/*,mb:\ ",elx:\ */ " intelligent comments
     "au FileType python setlocal formatoptions+=croq 
     "    \ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
     au FileType worklogfile setlocal guifont=Ubuntu\ Mono\ 10 tabstop=4 shiftwidth=4 expandtab
+    au Filetype gitcommit setlocal spell textwidth=72
 
 
 "====[ Disable Beeping ]===="
