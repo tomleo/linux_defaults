@@ -1,0 +1,77 @@
+[global_config]
+  enabled_plugins = LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
+  always_split_with_profile = True
+  title_transmit_fg_color = "#636e73"
+  suppress_multiple_term_dialog = True
+  title_transmit_bg_color = "#fafafa"
+  inactive_color_offset = 1.0
+[keybindings]
+  cycle_prev = <Primary><Shift>l
+  go_up = <Primary><Shift>k
+  next_tab = <Primary>Page_Up
+  prev_tab = <Primary>Page_Down
+  go_down = <Primary><Shift>j
+  cycle_next = <Primary><Shift>h
+  go_right = <Primary><Shift>l
+  go_left = <Primary><Shift>h
+[profiles]
+  [[default]]
+    palette = "#000000:#c75646:#8eb33b:#d0b03c:#72b3cc:#c8a0d1:#218693:#b0b0b0:#5d5d5d:#e09690:#cdee69:#ffe377:#9cd9f0:#fbb1f9:#77dfd8:#f7f7f7"
+    background_image = None
+    use_system_font = False
+    cursor_color = "#c75646"
+    foreground_color = "#f7f7f7"
+    font = Fira Mono 9
+    background_color = "#2d2d2d"
+[layouts]
+  [[default]]
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+    [[[window0]]]
+      type = Window
+      parent = ""
+  [[sage]]
+    [[[child0]]]
+      position = 0:25
+      type = Window
+      order = 0
+      parent = ""
+      size = 1920, 1004
+    [[[child1]]]
+      position = 502
+      type = VPaned
+      order = 0
+      parent = child0
+    [[[child2]]]
+      position = 960
+      type = HPaned
+      order = 0
+      parent = child1
+    [[[child5]]]
+      position = 960
+      type = HPaned
+      order = 1
+      parent = child1
+    [[[terminal3]]]
+      profile = Smyck
+      type = Terminal
+      order = 0
+      parent = child2
+      command = ""
+    [[[terminal4]]]
+      profile = Smyck
+      type = Terminal
+      order = 1
+      parent = child2
+    [[[terminal7]]]
+      profile = Smyck
+      type = Terminal
+      order = 1
+      parent = child5
+    [[[terminal6]]]
+      profile = Smyck
+      type = Terminal
+      order = 0
+      parent = child5
+[plugins]
