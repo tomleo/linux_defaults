@@ -2,34 +2,49 @@
 " Package Management
 " ==================
 
-set nocompatible
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'gmarik/Vundle.vim'  " let Vundle manage Vundle, required
-Plugin 'rking/ag.vim'
-Plugin 'jlanzarotta/bufexplorer'
-Plugin 'kien/ctrlp.vim'
-Plugin 'davidhalter/jedi-vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'tmhedberg/SimpylFold' " Python Code Folding
-Plugin 'majutsushi/tagbar'
-Plugin 'skammer/vim-css-color'
-Plugin 'hail2u/vim-css3-syntax'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'vim-scripts/taglist.vim' " source code browser plugin
-Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'bkad/CamelCaseMotion'
-Plugin 'Keithbsmiley/investigate.vim'
-Plugin 'chriskempson/base16-vim'
-Plugin 'amoffat/snake'
-Plugin 'NLKNguyen/papercolor-theme'
-Plugin 'kristijanhusak/vim-hybrid-material'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'vim-scripts/restore_view.vim'
-Plugin 'vim-scripts/SeeTab'
-Plugin 'tpope/vim-fireplace.git'
-call vundle#end()
+if has('vim_starting')
+  if &compatible
+    set nocompatible               " Be iMproved
+  endif
+
+  " Required:
+  set runtimepath+=/home/tom/.vim/bundle/neobundle.vim/
+endif
+
+call neobundle#begin(expand('/home/tom/.vim/bundle'))
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+NeoBundle 'gmarik/Vundle.vim'  " let Vundle manage Vundle, required
+NeoBundle 'rking/ag.vim'
+NeoBundle 'jlanzarotta/bufexplorer'
+NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'davidhalter/jedi-vim'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'tmhedberg/SimpylFold' " Python Code Folding
+NeoBundle 'majutsushi/tagbar'
+NeoBundle 'ap/vim-css-color' " ap fork is more activly maintained
+NeoBundle 'hail2u/vim-css3-syntax'
+NeoBundle 'vim-scripts/taglist.vim' " source code browser plugin
+NeoBundle 'mustache/vim-mustache-handlebars'
+NeoBundle 'bkad/CamelCaseMotion'
+NeoBundle 'Keithbsmiley/investigate.vim'
+NeoBundle 'chriskempson/base16-vim'
+NeoBundle 'amoffat/snake'
+NeoBundle 'NLKNguyen/papercolor-theme'
+NeoBundle 'kristijanhusak/vim-hybrid-material'
+NeoBundle 'Valloric/YouCompleteMe'
+NeoBundle 'vim-scripts/restore_view.vim'
+NeoBundle 'vim-scripts/SeeTab'
+NeoBundle 'tpope/vim-fireplace.git'
+NeoBundle 'tpope/vim-fugitive'
+
+call neobundle#end()
+
+filetype plugin indent on
+
+" If there are uninstalled bundles found on startup,
+" this will conveniently prompt you to install them.
+NeoBundleCheck
 
 " ==============
 " Basic Settings
@@ -46,12 +61,11 @@ set titlestring=%F
 set hlsearch
 set incsearch " start searching when you type the first character of the search string
 set ignorecase
-map <C-H> <C-W>h<C-W>h
-map <C-L> <C-W>l<C-W>l
-nmap <c-j> <c-w>j<c-w>j
-nmap <c-k> <c-w>k<c-w>k
-map <C-J> :bnext<CR>
-map <C-K> :bprev<CR>
+map <c-j> <c-w>j
+map <c-k> <c-w>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
 set nowrap
 set showmatch       " highlight matching braces
 set autoindent      " use indent of previous line
@@ -148,13 +162,13 @@ set comments=s1:/*,mb:\ ",elx:\ */ " intelligent comments
     endif
 
 "====[ Tmux Integration ]===="
-let g:tmux_navigator_no_mappings = 1
-nnoremap <silent> {Left-mapping} :TmuxNavigateLeft<cr>
-nnoremap <silent> {Down-Mapping} :TmuxNavigateDown<cr>
-nnoremap <silent> {Up-Mapping} :TmuxNavigateUp<cr>
-nnoremap <silent> {Right-Mapping} :TmuxNavigateRight<cr>
-nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
-let g:tmux_navigator_save_on_switch = 1  " Auto-save when leaving pane
+" let g:tmux_navigator_no_mappings = 1
+" nnoremap <silent> {Left-mapping} :TmuxNavigateLeft<cr>
+" nnoremap <silent> {Down-Mapping} :TmuxNavigateDown<cr>
+" nnoremap <silent> {Up-Mapping} :TmuxNavigateUp<cr>
+" nnoremap <silent> {Right-Mapping} :TmuxNavigateRight<cr>
+" nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
+" let g:tmux_navigator_save_on_switch = 1  " Auto-save when leaving pane
 
 " =====================
 " Basic Plugin Settings
@@ -222,9 +236,6 @@ let Tlist_WinWidth = 50 "This works well for longer Class and Function names
 
 " vim-scripts/restore_view.vim
 set viewoptions=cursor,folds,slash,unix
-
-" Rykka/riv.vim
-" g:riv_disable_folding
 
 
 " ===========
