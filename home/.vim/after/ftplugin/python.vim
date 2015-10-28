@@ -443,4 +443,7 @@ endfunction
 
 
 " vim:set et sts=2 sw=2:
+set tabstop=4
+set shiftwidth=4
+set expandtab
 
