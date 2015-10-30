@@ -14,7 +14,6 @@ endif
 call neobundle#begin(expand('/home/tom/.vim/bundle'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-NeoBundle 'gmarik/Vundle.vim'  " let Vundle manage Vundle, required
 NeoBundle 'rking/ag.vim'
 NeoBundle 'jlanzarotta/bufexplorer'
 NeoBundle 'kien/ctrlp.vim'
