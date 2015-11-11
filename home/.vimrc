@@ -1,4 +1,7 @@
-set shell=/bin/sh
+" Make vim work with fish shell
+if &shell =~# 'fish$'
+    set shell=/bin/sh
+endif
 
 " ==================
 " Package Management
@@ -38,6 +41,7 @@ NeoBundle 'vim-scripts/restore_view.vim'
 NeoBundle 'vim-scripts/SeeTab'
 NeoBundle 'tpope/vim-fireplace.git'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'dag/vim-fish'
 
 call neobundle#end()
 
