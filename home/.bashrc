@@ -126,6 +126,7 @@ if [ -f ~/.bash_secrets ]; then
     . ~/.bash_secrets
 fi
 
+export PATH=$PATH:/usr/bin
 export PATH=$PATH:/usr/local/bin
 export PATH=$PATH:/opt/sublime_text_3/
 
