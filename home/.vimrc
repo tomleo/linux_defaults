@@ -22,7 +22,6 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'jlanzarotta/bufexplorer'
 NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'davidhalter/jedi-vim'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'tmhedberg/SimpylFold' " Python Code Folding
 NeoBundle 'majutsushi/tagbar'
@@ -36,7 +35,6 @@ NeoBundle 'chriskempson/base16-vim'
 NeoBundle 'amoffat/snake'
 NeoBundle 'NLKNguyen/papercolor-theme'
 NeoBundle 'kristijanhusak/vim-hybrid-material'
-"NeoBundle 'Valloric/YouCompleteMe'
 NeoBundle 'vim-scripts/restore_view.vim'
 NeoBundle 'vim-scripts/SeeTab'
 NeoBundle 'tpope/vim-fireplace.git'
@@ -132,6 +130,7 @@ set comments=s1:/*,mb:\ ",elx:\ */ " intelligent comments
         let g:enable_bold_font = 1
         "colorscheme hybrid_material
         map <D-S-LEFT> <C-w>W
+        set lines=999 columns=99
     else
         set autochdir " directory to match the open file when editing in a terminal
         colorscheme wombat256mod
@@ -207,16 +206,6 @@ noremap <silent> <F11> :BufExplorer<CR>
 noremap <silent> <m-F11> :BufExplorerHorizontalSplit<CR>
 noremap <silent> <c-F11> :BufExplorerVerticalSplit<CR>
 
-" davidhalter/jedi-vim
-let g:jedi#popup_on_dot = 0
-let g:jedi#goto_assignments_command = "<leader>g"
-let g:jedi#goto_definitions_command = "<leader>d"
-let g:jedi#documentation_command = "K"
-let g:jedi#usages_command = "<leader>n"
-let g:jedi#rename_command = "<leader>r"
-let g:jedi#show_call_signatures = "0"
-let g:jedi#completions_command = "<C-Space>"
-
 " rking/ag
 if executable('ag')
     " Note we extract the column as well as the file and line number
@@ -258,32 +247,6 @@ set viewoptions=cursor,folds,slash,unix
       execute 'let char = "\u'.a:cp.'"'
       execute a:line1.','.a:line2.'s/\%V[^[:cntrl:]]/&'.char.'/ge'
     endfunction
-
-"====[ Make the 119st column stand out ]===================="
-
-    " See http://stackoverflow.com/a/235970/465270
-    "set textwidth=74    " wrap lines at 80 chars
-    "set colorcolumn=+1  " highlight column after 'textwidth'
-    "set colorcolumn=99  " highlight column after 80 chars
-    "highlight colorcolumn ctermbg=lightgrey guibg=#888888
-    "highlight OverLength ctermbg=lightgrey ctermfg=black guibg=#888888
-    "highlight ColorColumn ctermbg=233
-
-    " just the 100th column of wide lines...
-    "highlight ColorColumn ctermbg=magenta
-    "call matchadd('ColorColumn', '\%99v', 119)
-
-    "highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-    "match OverLength /\%100v.\+/
-
-
-"====[ Powerline ]===="
-" 
-" set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
-" set laststatus=2
-"
-" Fonts seem to not work corrently look into this later
-let g:Powerline_symbols = 'fancy'
 
 
 "====[ Basic Styling END ]===="
