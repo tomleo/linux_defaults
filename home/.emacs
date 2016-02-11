@@ -1,21 +1,24 @@
 (setq-default indent-tabs-mode nil)
 
-(tool-bar-mode -1)
-(menu-bar-mode 1)
+(tool-bar-mode 0)
+(menu-bar-mode 0)
 
-(require 'package)
-  (push '("marmalade" . "http://marmalade-repo.org/packages/")
-        package-archives )
-  (push '("melpa" . "http://melpa.milkbox.net/packages/")
-        package-archives)
-  (package-initialize)
+(require 'package) ;; You might already have this line
 
+
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                     ("marmalade" . "http://marmalade-repo.org/packages/")
+                     ("melpa" . "http://melpa.org/packages/")))
+(add-to-list 'package-archives
+             '("elpy" . "https://jorgenschaefer.github.io/packages/"))
+(package-initialize)
+(elpy-enable)
+
+;; via http://www.scriptscoop.net/t/be2f46b8ec4d/emacs-org-mode-evil-mode-tab-key-not-working.html
+(setq evil-want-C-i-jump nil)
 (require 'evil)
 (evil-mode 1)
-
-(setq load-path (cons "~/.emacs.d/powerline" load-path))
-(require 'powerline)
-(powerline-center-evil-theme)
+(setq evil-want-visual-char-semi-exclusive t) ;; Fix selection to work like VIM
 
 (setq load-path (cons "~/.emacs.d/org-mode/lisp" load-path))
 (setq load-path (cons "~/.emasc.d/org-mode/contrib/lisp" load-path))
@@ -25,11 +28,15 @@
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cc" 'org-capture)
 (global-set-key "\C-cb" 'Org-iswitchb)
-
-
-
-(load-file "~/.emacs.d/emacs-material-theme/material-theme.el")
-(load-theme 'material t)
+(global-set-key (kbd "C-c a") 'org-agenda)
+(setq org-agenda-files (list "~/lists/todo.org"))
+(setq org-clock-persist 'history)
+(org-clock-persistence-insinuate)
+(setq org-todo-keywords
+    '((sequence "TODO" "HOLD" "|" "DONE" "DELEGATED")))
+(setq org-todo-keyword-faces
+      '(("HOLD" . (:background "yellow" :foreground "black"))
+        ("DELEGATED" . (:foreground "blue" :weight bold))))
 
 (require 'flycheck)
 
@@ -75,6 +82,23 @@
 (setq twittering-use-master-password t)
 
 
-(when (member "Fira Mono" (font-family-list))
-  (set-face-attribute 'default nil :font "-unknown-Fira Mono-normal-normal-normal-*-9-*-*-*-m-0-iso10646-1")
-    )
+;(set-face-attribute 'default nil :font "DejaVu Sans Mono-9")
+(set-face-attribute 'default nil :font "-unknown-Fira Mono-normal-normal-normal-*-9-*-*-*-m-0-iso10646-1")
+
+(projectile-global-mode)
+(require 'helm-projectile)
+(setq projectile-completion-system 'helm)
+(helm-projectile-on)
+(add-to-list 'load-path "/home/tom/hacking/linux_defaults/home/.emacs.d/color-theme-wombat")
+(load-theme 'wombat)
+
+(setq ag-highlight-search t)
+(setq projectile-switch-project-action 'helm-projectile-find-file)
+(setq projectile-switch-project-action 'helm-projectile)
+
+(require 'evil-magit)
+
+(global-set-key (kbd "C-k") 'windmove-up)
+(global-set-key (kbd "C-j") 'windmove-down)
+(global-set-key (kbd "C-h") 'windmove-left)
+(global-set-key (kbd "C-l") 'windmove-right)

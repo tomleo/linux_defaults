@@ -136,7 +136,6 @@ set comments=s1:/*,mb:\ ",elx:\ */ " intelligent comments
         colorscheme wombat256mod
     endif
 
-
 "====[ Swap : and ; to make colon commands easier to type ]======"
 
     nnoremap  ;  :
@@ -209,7 +208,7 @@ noremap <silent> <c-F11> :BufExplorerVerticalSplit<CR>
 " rking/ag
 if executable('ag')
     " Note we extract the column as well as the file and line number
-    set grepprg=ag\ --nogroup\ --nocolor\ -v
+    set grepprg=ag\ --nogroup\ --nocolor
     set grepformat=%f:%l:%c%m
 endif
 let g:ag_prg="ag -v"
