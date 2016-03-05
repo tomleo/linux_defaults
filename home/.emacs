@@ -4,14 +4,20 @@
 (menu-bar-mode 1)
 
 (require 'package)
-  (push '("marmalade" . "http://marmalade-repo.org/packages/")
-        package-archives )
-  (push '("melpa" . "http://melpa.milkbox.net/packages/")
-        package-archives)
-  (package-initialize)
+(push '("marmalade" . "http://marmalade-repo.org/packages/")
+    package-archives )
+(push '("melpa" . "http://melpa.milkbox.net/packages/")
+    package-archives)
+(package-initialize)
 
+(setq load-path (cons "~/.emacs.d/dash.el" load-path))
+
+
+(setq load-path (cons "~/.emacs.d/evil" load-path))
 (require 'evil)
 (evil-mode 1)
+
+
 
 (setq load-path (cons "~/.emacs.d/powerline" load-path))
 (require 'powerline)
@@ -31,6 +37,7 @@
 (load-file "~/.emacs.d/emacs-material-theme/material-theme.el")
 (load-theme 'material t)
 
+(setq load-path (cons "~/.emacs.d/flycheck" load-path))
 (require 'flycheck)
 
 (setq load-path (cons "~/.emacs.d/web-mode" load-path))
@@ -78,3 +85,5 @@
 (when (member "Fira Mono" (font-family-list))
   (set-face-attribute 'default nil :font "-unknown-Fira Mono-normal-normal-normal-*-9-*-*-*-m-0-iso10646-1")
     )
+
+
