@@ -1,17 +1,19 @@
 [global_config]
-  enabled_plugins = LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
+  enabled_plugins = ActivityWatch, LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
   always_split_with_profile = True
   title_transmit_fg_color = "#636e73"
   suppress_multiple_term_dialog = True
   title_transmit_bg_color = "#fafafa"
   inactive_color_offset = 1.0
 [keybindings]
-  cycle_prev = <Primary><Shift>l
+  cycle_prev = <Alt><Super>h
   go_up = <Primary><Shift>k
   next_tab = <Primary>Page_Up
+  split_horiz = <Primary><Shift>s
   prev_tab = <Primary>Page_Down
   go_down = <Primary><Shift>j
-  cycle_next = <Primary><Shift>h
+  cycle_next = <Alt><Super>l
+  split_vert = <Primary><Shift>h
   go_right = <Primary><Shift>l
   go_left = <Primary><Shift>h
 [profiles]
@@ -21,8 +23,9 @@
     use_system_font = False
     cursor_color = "#c75646"
     foreground_color = "#f7f7f7"
-    font = Fira Mono 9
+    font = DejaVu Sans Mono 9
     background_color = "#2d2d2d"
+    scrollback_infinite = True
 [layouts]
   [[default]]
     [[[child1]]]
