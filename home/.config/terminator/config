@@ -1,31 +1,32 @@
 [global_config]
-  enabled_plugins = InactivityWatch, LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
+  enabled_plugins = ActivityWatch, LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
   always_split_with_profile = True
   title_transmit_fg_color = "#636e73"
   suppress_multiple_term_dialog = True
   title_transmit_bg_color = "#fafafa"
   inactive_color_offset = 1.0
 [keybindings]
-  cycle_prev = <Primary><Shift>l
-  next_tab = <Primary>Page_Up
-  go_up = <Primary><Shift>k
   close_window = None
+  cycle_prev = <Primary><Shift>l
+  go_up = <Primary><Shift>k
+  next_tab = <Primary>Page_Up
   split_horiz = <Primary><Shift>s
   prev_tab = <Primary>Page_Down
   go_down = <Primary><Shift>j
-  cycle_next = <Primary><Shift>h
+  cycle_next = <Alt><Super>l
   split_vert = <Primary><Shift>h
   go_right = <Primary><Shift>l
   go_left = <Primary><Shift>h
 [profiles]
   [[default]]
-    palette = "#000000:#c75646:#706e6e:#d0b03c:#ffffff:#c8a0d1:#218693:#b0b0b0:#5d5d5d:#e09690:#ffffff:#ffe377:#ffffff:#fbb1f9:#77dfd8:#f7f7f7"
+    palette = "#000000:#c75646:#8eb33b:#d0b03c:#72b3cc:#c8a0d1:#218693:#b0b0b0:#5d5d5d:#e09690:#cdee69:#ffe377:#9cd9f0:#fbb1f9:#77dfd8:#f7f7f7"
     background_image = None
     use_system_font = False
     cursor_color = "#c75646"
     foreground_color = "#f7f7f7"
     font = Fira Mono 9
     background_color = "#2d2d2d"
+    scrollback_infinite = True
 [layouts]
   [[default]]
     [[[child1]]]
