@@ -126,21 +126,14 @@ if [ -f ~/.bash_secrets ]; then
     . ~/.bash_secrets
 fi
 
+
 export PATH=$PATH:/usr/local/bin
 export PATH=$PATH:/opt/sublime_text_3/
 
-# Power Lines Configuration
+
 if [ -d "$HOME/.local/bin" ]; then
     PATH="$HOME/.local/bin:$PATH"
 fi
-export POWERLINE_COMMAND=powerline
-if [ -f ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh ]; then
-    source ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
-fi
-
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
 
 # Android SDK
 export PATH=$PATH:/usr/local/android-sdk-linux/

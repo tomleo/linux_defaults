@@ -1,8 +1,3 @@
-" Make vim work with fish shell
-if &shell =~# 'fish$'
-    set shell=/bin/sh
-endif
-
 " ==================
 " Package Management
 " ==================
@@ -32,7 +27,7 @@ NeoBundle 'mustache/vim-mustache-handlebars'
 NeoBundle 'bkad/CamelCaseMotion'
 NeoBundle 'Keithbsmiley/investigate.vim'
 NeoBundle 'chriskempson/base16-vim'
-NeoBundle 'amoffat/snake'
+" NeoBundle 'amoffat/snake'
 NeoBundle 'NLKNguyen/papercolor-theme'
 NeoBundle 'kristijanhusak/vim-hybrid-material'
 NeoBundle 'vim-scripts/restore_view.vim'
@@ -81,7 +76,13 @@ set comments=s1:/*,mb:\ ",elx:\ */ " intelligent comments
     " Visualmode is not via CTRL-Q instead of CTRL-V
     source $VIMRUNTIME/mswin.vim
     behave mswin
-    set clipboard^=unnamed
+    "set clipboard^=unnamed
+
+    "This is for X11 PRIMARY selection
+    set clipboard+=unnamed,unnamedplus
+
+    " set clipboard*=unnamedplus "This is for X11 CLIPBOARD selection
+
 
 "====[ UTF-8 all the things ]================"
 
@@ -104,6 +105,20 @@ set comments=s1:/*,mb:\ ",elx:\ */ " intelligent comments
     nnoremap <C-F1> :if &go=~#'m'<Bar>set go-=m<Bar>else<Bar>set go+=m<Bar>endif<CR>
     nnoremap <C-F2> :if &go=~#'T'<Bar>set go-=T<Bar>else<Bar>set go+=T<Bar>endif<CR>
     nnoremap <C-F3> :if &go=~#'r'<Bar>set go-=r<Bar>else<Bar>set go+=r<Bar>endif<CR>
+
+"====[ Terminal Emulator Settings ]===="
+
+tnoremap <Esc> <C-\><C-n> " Exit Terminal Mode
+" Exit Terminal mode and switch buffers
+tnoremap <A-h> <C-\><C-n><C-w>h
+tnoremap <A-j> <C-\><C-n><C-w>j
+tnoremap <A-k> <C-\><C-n><C-w>k
+tnoremap <A-l> <C-\><C-n><C-w>l
+" Switch Buffers using meta key
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
 
 "====[ UI Settings - Color Scheme ]===="
 
@@ -132,7 +147,6 @@ set comments=s1:/*,mb:\ ",elx:\ */ " intelligent comments
         map <D-S-LEFT> <C-w>W
         set lines=999 columns=99
     else
-        set autochdir " directory to match the open file when editing in a terminal
         colorscheme wombat256mod
     endif
 
@@ -257,3 +271,6 @@ set viewoptions=cursor,folds,slash,unix
     set shiftwidth=4	" indent with 4 spaces
     set expandtab		" always uses spaces instead of tab characters
 
+
+" Workaround for Virtualenv support
+let g:python_host_prog="/home/tom/energysage/env/bin/python"

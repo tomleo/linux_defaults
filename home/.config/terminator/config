@@ -23,7 +23,7 @@
     use_system_font = False
     cursor_color = "#c75646"
     foreground_color = "#f7f7f7"
-    font = DejaVu Sans Mono 9
+    font = Input Mono 8
     background_color = "#2d2d2d"
     scrollback_infinite = True
 [layouts]
