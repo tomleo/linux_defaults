@@ -6,3 +6,5 @@ git@github.com:Dewdrops/powerline.git
 git://github.com/hayamiz/twittering-mode.git
 hg clone https://bitbucket.org/lyro/evil
 git@github.com:flycheck/flycheck.git
+
+wget https://www.emacswiki.org/emacs/download/mc-auto-encrypt.el
