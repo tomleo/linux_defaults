@@ -16,7 +16,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'rking/ag.vim'
 NeoBundle 'jlanzarotta/bufexplorer'
-NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'tmhedberg/SimpylFold' " Python Code Folding
 NeoBundle 'majutsushi/tagbar'
@@ -27,7 +27,6 @@ NeoBundle 'mustache/vim-mustache-handlebars'
 NeoBundle 'bkad/CamelCaseMotion'
 NeoBundle 'Keithbsmiley/investigate.vim'
 NeoBundle 'chriskempson/base16-vim'
-" NeoBundle 'amoffat/snake'
 NeoBundle 'NLKNguyen/papercolor-theme'
 NeoBundle 'kristijanhusak/vim-hybrid-material'
 NeoBundle 'vim-scripts/restore_view.vim'
@@ -196,23 +195,28 @@ let NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache_
 let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
 let NERDTreeShowBookmarks=1
 
-" youcompleteme
-" let g:ycm_collect_identifiers_from_tags_files = 1 " Let YCM read tags from Ctags file
-" let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
-" let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
-" let g:ycm_complete_in_comments = 1 " Completion in comments
-" let g:ycm_complete_in_strings = 1 " Completion in string
-
 " kien/ctrlp.vim
-set runtimepath^=~/.vim/bundle/ctrlp.vim
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|tox)$'
-let g:ctrlp_user_command = "find %s -type f | grep -Ev '"+ g:ctrlp_custom_ignore +"'"
-let g:ctrlp_use_caching = 0
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_root_markers = '/home/tom/energysage/'
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
+" set runtimepath^=~/.vim/bundle/ctrlp.vim
+" let g:ctrlp_by_filename = 1
+" let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|tox)$'
+" let g:ctrlp_user_command = "find %s -type f | grep -Ev '"+ g:ctrlp_custom_ignore +"'"
+" let g:ctrlp_use_caching = 1
+" let g:ctrlp_map = '<c-p>'
+" let g:ctrlp_cmd = 'CtrlP'
+" let g:ctrlp_working_path_mode = 'r'
+" let g:ctrlp_root_markers = '/home/tom/energysage/'
+" set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
+
+" dyng/ctrlsf.vim
+" nmap     <C-f>f <Plug>CtrlSFPrompt
+" vmap     <C-f>f <Plug>CtrlSFVwordPath
+" vmap     <C-f>F <Plug>CtrlSFVwordExec
+" nmap     <C-f>n <Plug>CtrlSFCwordPath
+" nmap     <C-f>p <Plug>CtrlSFPwordPath
+" nnoremap <C-f>o :CtrlSFOpen<CR>
+" nnoremap <C-f>t :CtrlSFToggle<CR>
+" inoremap <C-f>t <Esc>:CtrlSFToggle<CR>
+
 
 " jlanzarotta/bufexplorer
 noremap <silent> <F11> :BufExplorer<CR>
@@ -220,12 +224,14 @@ noremap <silent> <m-F11> :BufExplorerHorizontalSplit<CR>
 noremap <silent> <c-F11> :BufExplorerVerticalSplit<CR>
 
 " rking/ag
-if executable('ag')
-    " Note we extract the column as well as the file and line number
-    set grepprg=ag\ --nogroup\ --nocolor
-    set grepformat=%f:%l:%c%m
-endif
-let g:ag_prg="ag -v"
+" if executable('ag')
+"     " Note we extract the column as well as the file and line number
+"     set grepprg=ag\ --nogroup\ --nocolor
+"     set grepformat=%f:%l:%c%m
+" endif
+" let g:ag_prg="ag -v"
+let g:ag_prg="ag --vimgrep --smart-case"
+let g:ag_working_path_mode="r"
 
 " Keithbsmiley/investigate.vim
 let g:investigate_use_dash=1
@@ -274,3 +280,4 @@ set viewoptions=cursor,folds,slash,unix
 
 " Workaround for Virtualenv support
 let g:python_host_prog="/home/tom/energysage/env/bin/python"
+
