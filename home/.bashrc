@@ -121,6 +121,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
+source ~/git-flow-completion.bash
+
 
 if [ -f ~/.bash_secrets ]; then
     . ~/.bash_secrets
