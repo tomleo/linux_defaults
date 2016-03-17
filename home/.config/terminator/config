@@ -13,7 +13,7 @@
   prev_tab = <Primary>Page_Down
   go_down = <Primary><Shift>j
   cycle_next = <Alt><Super>l
-  split_vert = <Primary><Shift>h
+  split_vert = <Primary><Shift>y
   go_right = <Primary><Shift>l
   go_left = <Primary><Shift>h
 [profiles]

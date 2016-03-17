@@ -33,7 +33,6 @@ NeoBundle 'vim-scripts/restore_view.vim'
 NeoBundle 'vim-scripts/SeeTab'
 NeoBundle 'tpope/vim-fireplace.git'
 NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'dag/vim-fish'
 
 call neobundle#end()
 
@@ -197,26 +196,15 @@ let NERDTreeShowBookmarks=1
 
 " kien/ctrlp.vim
 " set runtimepath^=~/.vim/bundle/ctrlp.vim
-" let g:ctrlp_by_filename = 1
-" let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|tox)$'
-" let g:ctrlp_user_command = "find %s -type f | grep -Ev '"+ g:ctrlp_custom_ignore +"'"
-" let g:ctrlp_use_caching = 1
-" let g:ctrlp_map = '<c-p>'
-" let g:ctrlp_cmd = 'CtrlP'
-" let g:ctrlp_working_path_mode = 'r'
+let g:ctrlp_by_filename = 0
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|tox)$'
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+let g:ctrlp_use_caching = 1
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'r'
 " let g:ctrlp_root_markers = '/home/tom/energysage/'
-" set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
-
-" dyng/ctrlsf.vim
-" nmap     <C-f>f <Plug>CtrlSFPrompt
-" vmap     <C-f>f <Plug>CtrlSFVwordPath
-" vmap     <C-f>F <Plug>CtrlSFVwordExec
-" nmap     <C-f>n <Plug>CtrlSFCwordPath
-" nmap     <C-f>p <Plug>CtrlSFPwordPath
-" nnoremap <C-f>o :CtrlSFOpen<CR>
-" nnoremap <C-f>t :CtrlSFToggle<CR>
-" inoremap <C-f>t <Esc>:CtrlSFToggle<CR>
-
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
 
 " jlanzarotta/bufexplorer
 noremap <silent> <F11> :BufExplorer<CR>
@@ -239,6 +227,7 @@ let g:investigate_command_for_python = '/usr/bin/zeal --query ^s'
 
 " majutsushi/tagbar
 nmap <F8> :TagbarToggle<CR>
+let g:tagbar_left = 1
 
 
 " vim-scripts/taglist.vim
@@ -277,7 +266,9 @@ set viewoptions=cursor,folds,slash,unix
     set shiftwidth=4	" indent with 4 spaces
     set expandtab		" always uses spaces instead of tab characters
 
-
-" Workaround for Virtualenv support
-let g:python_host_prog="/home/tom/energysage/env/bin/python"
+"====[ Window Resize ]===="
+map <Up> <c-w>k<c-w>_<c-w><Bar>
+map <Down> <c-w>j<c-w>_<c-w><Bar>
+map <Left> <c-w>h<c-w>_<c-w><Bar>
+map <Right> <c-w>l<c-w>_<c-w><Bar>
 
