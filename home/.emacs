@@ -170,7 +170,7 @@
   (condition-case nil (elpy-goto-definition)
     (error (elpy-rgrep-symbol (thing-at-point 'symbol)))))
 
-(define-key elpy-mode-map (kbd "M-.") 'goto-def-or-rgrep)
+; (define-key elpy-mode-map (kbd "M-.") 'goto-def-or-rgrep)
 
 
 (add-hook 'python-mode-hook (lambda () hs-minor-mode))
