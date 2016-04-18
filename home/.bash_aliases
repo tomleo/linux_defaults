@@ -21,5 +21,9 @@ alias drive=drive-linux-amd64
 alias alert_helper='history|tail -n1|sed -e "s/^\s*[0-9]\+\s*//" -e "s/;\s*alert$//"'
 alias alert='notify-send -i /usr/share/icons/gnome/32x32/apps/gnome-terminal.png "[$?] $(alert_helper)"'
 
-alias esenv="source /home/tom/energysage/env18/bin/activate && export DJANGO_SETTINGS_MODULE='es.settings.local_dev'"
+export EMAIL="tom@energysage.com"
+export NAME="Thomas Leo"
+
+
+alias edit="vim -c 'cd $PWD'"
 

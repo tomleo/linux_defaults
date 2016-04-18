@@ -1,8 +1,3 @@
-" Make vim work with fish shell
-if &shell =~# 'fish$'
-    set shell=/bin/sh
-endif
-
 " ==================
 " Package Management
 " ==================
@@ -21,7 +16,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'rking/ag.vim'
 NeoBundle 'jlanzarotta/bufexplorer'
-NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'tmhedberg/SimpylFold' " Python Code Folding
 NeoBundle 'majutsushi/tagbar'
@@ -32,14 +27,12 @@ NeoBundle 'mustache/vim-mustache-handlebars'
 NeoBundle 'bkad/CamelCaseMotion'
 NeoBundle 'Keithbsmiley/investigate.vim'
 NeoBundle 'chriskempson/base16-vim'
-" NeoBundle 'amoffat/snake'
 NeoBundle 'NLKNguyen/papercolor-theme'
 NeoBundle 'kristijanhusak/vim-hybrid-material'
 NeoBundle 'vim-scripts/restore_view.vim'
 NeoBundle 'vim-scripts/SeeTab'
 NeoBundle 'tpope/vim-fireplace.git'
 NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'dag/vim-fish'
 
 call neobundle#end()
 
@@ -81,7 +74,13 @@ set comments=s1:/*,mb:\ ",elx:\ */ " intelligent comments
     " Visualmode is not via CTRL-Q instead of CTRL-V
     source $VIMRUNTIME/mswin.vim
     behave mswin
-    set clipboard^=unnamed
+    "set clipboard^=unnamed
+
+    "This is for X11 PRIMARY selection
+    set clipboard+=unnamed,unnamedplus
+
+    " set clipboard*=unnamedplus "This is for X11 CLIPBOARD selection
+
 
 "====[ UTF-8 all the things ]================"
 
@@ -104,6 +103,20 @@ set comments=s1:/*,mb:\ ",elx:\ */ " intelligent comments
     nnoremap <C-F1> :if &go=~#'m'<Bar>set go-=m<Bar>else<Bar>set go+=m<Bar>endif<CR>
     nnoremap <C-F2> :if &go=~#'T'<Bar>set go-=T<Bar>else<Bar>set go+=T<Bar>endif<CR>
     nnoremap <C-F3> :if &go=~#'r'<Bar>set go-=r<Bar>else<Bar>set go+=r<Bar>endif<CR>
+
+"====[ Terminal Emulator Settings ]===="
+
+tnoremap <Esc> <C-\><C-n> " Exit Terminal Mode
+" Exit Terminal mode and switch buffers
+tnoremap <A-h> <C-\><C-n><C-w>h
+tnoremap <A-j> <C-\><C-n><C-w>j
+tnoremap <A-k> <C-\><C-n><C-w>k
+tnoremap <A-l> <C-\><C-n><C-w>l
+" Switch Buffers using meta key
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
 
 "====[ UI Settings - Color Scheme ]===="
 
@@ -132,7 +145,6 @@ set comments=s1:/*,mb:\ ",elx:\ */ " intelligent comments
         map <D-S-LEFT> <C-w>W
         set lines=999 columns=99
     else
-        set autochdir " directory to match the open file when editing in a terminal
         colorscheme wombat256mod
     endif
 
@@ -182,22 +194,16 @@ let NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache_
 let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
 let NERDTreeShowBookmarks=1
 
-" youcompleteme
-" let g:ycm_collect_identifiers_from_tags_files = 1 " Let YCM read tags from Ctags file
-" let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
-" let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
-" let g:ycm_complete_in_comments = 1 " Completion in comments
-" let g:ycm_complete_in_strings = 1 " Completion in string
-
 " kien/ctrlp.vim
-set runtimepath^=~/.vim/bundle/ctrlp.vim
+" set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:ctrlp_by_filename = 0
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|tox)$'
-let g:ctrlp_user_command = "find %s -type f | grep -Ev '"+ g:ctrlp_custom_ignore +"'"
-let g:ctrlp_use_caching = 0
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+let g:ctrlp_use_caching = 1
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_root_markers = '/home/tom/energysage/'
+let g:ctrlp_working_path_mode = 'r'
+" let g:ctrlp_root_markers = '/home/tom/energysage/'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
 
 " jlanzarotta/bufexplorer
@@ -206,12 +212,14 @@ noremap <silent> <m-F11> :BufExplorerHorizontalSplit<CR>
 noremap <silent> <c-F11> :BufExplorerVerticalSplit<CR>
 
 " rking/ag
-if executable('ag')
-    " Note we extract the column as well as the file and line number
-    set grepprg=ag\ --nogroup\ --nocolor
-    set grepformat=%f:%l:%c%m
-endif
-let g:ag_prg="ag -v"
+" if executable('ag')
+"     " Note we extract the column as well as the file and line number
+"     set grepprg=ag\ --nogroup\ --nocolor
+"     set grepformat=%f:%l:%c%m
+" endif
+" let g:ag_prg="ag -v"
+let g:ag_prg="ag --vimgrep --smart-case"
+let g:ag_working_path_mode="r"
 
 " Keithbsmiley/investigate.vim
 let g:investigate_use_dash=1
@@ -219,6 +227,7 @@ let g:investigate_command_for_python = '/usr/bin/zeal --query ^s'
 
 " majutsushi/tagbar
 nmap <F8> :TagbarToggle<CR>
+let g:tagbar_left = 1
 
 
 " vim-scripts/taglist.vim
@@ -256,4 +265,10 @@ set viewoptions=cursor,folds,slash,unix
     set tabstop=4		" tab width is 4 spaces
     set shiftwidth=4	" indent with 4 spaces
     set expandtab		" always uses spaces instead of tab characters
+
+"====[ Window Resize ]===="
+map <Up> <c-w>k<c-w>_<c-w><Bar>
+map <Down> <c-w>j<c-w>_<c-w><Bar>
+map <Left> <c-w>h<c-w>_<c-w><Bar>
+map <Right> <c-w>l<c-w>_<c-w><Bar>
 

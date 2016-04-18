@@ -110,6 +110,10 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+if [ -f ~/.bash_loc_aliases ]; then
+    . ~/.bash_loc_aliases
+fi
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -121,27 +125,21 @@ if ! shopt -oq posix; then
   fi
 fi
 
+source ~/git-flow-completion.bash
+
 
 if [ -f ~/.bash_secrets ]; then
     . ~/.bash_secrets
 fi
 
-export PATH=$PATH:/usr/bin
+
 export PATH=$PATH:/usr/local/bin
 export PATH=$PATH:/opt/sublime_text_3/
 
-# Power Lines Configuration
+
 if [ -d "$HOME/.local/bin" ]; then
     PATH="$HOME/.local/bin:$PATH"
 fi
-export POWERLINE_COMMAND=powerline
-if [ -f ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh ]; then
-    source ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
-fi
-
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
 
 # Android SDK
 export PATH=$PATH:/usr/local/android-sdk-linux/
