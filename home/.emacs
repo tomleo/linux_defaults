@@ -52,6 +52,39 @@
  'org-babel-load-languages
  '((python . t)))
 
+
+;; (setq org-publish-project-alist
+;;       '(
+;; 
+;;    ("org-tom"
+;;           ;; Path to your org files.
+;;           :base-directory "/home/tom/hacking/org-jekyll-site/org/"
+;;           :base-extension "org"
+;; 
+;;           ;; Path to your Jekyll project.
+;;           :publishing-directory "/home/tom/hacking/org-jekyll-site/org/jekyll"
+;;           :recursive t
+;;           :publishing-function org-publish-org-to-html
+;;           :headline-levels 4 
+;;           :html-extension "html"
+;;           :body-only t ;; Only export section between <body> </body>
+;;     )
+;; 
+;; 
+;;     ("org-static-tom"
+;;           :base-directory "/home/tom/hacking/org-jekyll-site/org/"
+;;           :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf\\|php"
+;;           :publishing-directory "/home/tom/hacking/org-jekyll-site/"
+;;           :recursive t
+;;           :publishing-function org-publish-attachment)
+;; 
+;;     ("tom" :components ("org-tom" "org-static-tom"))
+;; 
+;; ))        
+
+
+
+
 (require 'flycheck)
 
 (setq load-path (cons "~/.emacs.d/web-mode" load-path))
@@ -113,10 +146,6 @@
 
 (define-key org-mode-map (kbd "C-j") nil)
 (define-key org-mode-map (kbd "C-k") nil)
-;; (define-key term-send-raw (kbd "C-h") nil)
-;; (define-key evil-insert-digraph (kbd "C-k") nil)
-;; (define-key term-send-raw (kbd "C-j") nil)
-
 (global-set-key (kbd "C-k") 'windmove-up)
 (global-set-key (kbd "C-j") 'windmove-down)
 (global-set-key (kbd "C-h") 'windmove-left)
