@@ -150,4 +150,5 @@ export PATH=$PATH:/usr/local/android-sdk-linux/build-tools
 export GOPATH=$HOME/gopath
 export PATH=$GOPATH:$GOPATH/bin:$PATH
 
-
+alias edit='vim -c "cd $(pwd)"'
+alias music=ncmpc

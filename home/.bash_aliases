@@ -24,6 +24,3 @@ alias alert='notify-send -i /usr/share/icons/gnome/32x32/apps/gnome-terminal.png
 export EMAIL="tom@energysage.com"
 export NAME="Thomas Leo"
 
-
-alias edit="vim -c 'cd $PWD'"
-

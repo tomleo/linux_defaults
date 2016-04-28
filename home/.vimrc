@@ -272,3 +272,6 @@ map <Down> <c-w>j<c-w>_<c-w><Bar>
 map <Left> <c-w>h<c-w>_<c-w><Bar>
 map <Right> <c-w>l<c-w>_<c-w><Bar>
 
+" Insert tabs with Shift-tab
+inoremap <S-Tab> <C-V><Tab>
+
