@@ -18,13 +18,13 @@
   go_left = <Primary><Shift>h
 [profiles]
   [[default]]
-    palette = "#000000:#c75646:#8eb33b:#d0b03c:#72b3cc:#c8a0d1:#218693:#b0b0b0:#1c1c1c:#e09690:#cdee69:#ffe377:#9cd9f0:#fbb1f9:#77dfd8:#f7f7f7"
+    palette = "#212121:#b7141f:#457b24:#f6981e:#134eb2:#560088:#0e717c:#efefef:#424242:#e83b3f:#7aba3a:#ffea2e:#54a4f3:#aa4dbc:#26bbd1:#d9d9d9"
     background_image = None
     use_system_font = False
-    cursor_color = "#c75646"
-    foreground_color = "#f7f7f7"
+    cursor_color = "#16afca"
+    foreground_color = "#e5e5e5"
     font = Input Mono 8
-    background_color = "#1c1c1c"
+    background_color = "#232322"
     scrollback_infinite = True
 [layouts]
   [[default]]
