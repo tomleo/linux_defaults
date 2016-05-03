@@ -229,23 +229,10 @@
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
-(require 'org-trello)
 
-
-(custom-set-variables '(org-trello-files '("~/lists/tasks.org")))
 
 ;; (setq org-trello-consumer-key "179502231be7744ef4465838cf40f7de")
 ;; (setq org-trello-access-token "5fdb251a09074e5cdf0101df8e1d718b823f6eafd7e4f48cae3d861b8f81b9f3")
-
-;; org-trello major mode for all .trello files
-(add-to-list 'auto-mode-alist '("\\.trello$" . org-mode))
-
-;; add a hook function to check if this is trello file, then activate the org-trello minor mode.
-(add-hook 'org-mode-hook
-          (lambda ()
-            (let ((filename (buffer-file-name (current-buffer))))
-              (when (and filename (string= "trello" (file-name-extension filename)))
-              (org-trello-mode)))))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

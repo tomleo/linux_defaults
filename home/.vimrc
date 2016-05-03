@@ -33,6 +33,7 @@ NeoBundle 'vim-scripts/restore_view.vim'
 NeoBundle 'vim-scripts/SeeTab'
 NeoBundle 'tpope/vim-fireplace.git'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'rhysd/nyaovim-popup-tooltip'
 
 call neobundle#end()
 
