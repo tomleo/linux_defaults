@@ -1,7 +1,7 @@
 (setq-default indent-tabs-mode nil)
 
 (tool-bar-mode 0) ;; Hide Toolbar
-(menu-bar-mode 0) ;; Hide Menu
+(menu-bar-mode 1) ;; Show Menu
 (scroll-bar-mode -1) ;; Hide Scrollbar
 
 (require 'package) ;; You might already have this line
@@ -51,39 +51,6 @@
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((python . t)))
-
-
-;; (setq org-publish-project-alist
-;;       '(
-;; 
-;;    ("org-tom"
-;;           ;; Path to your org files.
-;;           :base-directory "/home/tom/hacking/org-jekyll-site/org/"
-;;           :base-extension "org"
-;; 
-;;           ;; Path to your Jekyll project.
-;;           :publishing-directory "/home/tom/hacking/org-jekyll-site/org/jekyll"
-;;           :recursive t
-;;           :publishing-function org-publish-org-to-html
-;;           :headline-levels 4 
-;;           :html-extension "html"
-;;           :body-only t ;; Only export section between <body> </body>
-;;     )
-;; 
-;; 
-;;     ("org-static-tom"
-;;           :base-directory "/home/tom/hacking/org-jekyll-site/org/"
-;;           :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf\\|php"
-;;           :publishing-directory "/home/tom/hacking/org-jekyll-site/"
-;;           :recursive t
-;;           :publishing-function org-publish-attachment)
-;; 
-;;     ("tom" :components ("org-tom" "org-static-tom"))
-;; 
-;; ))        
-
-
-
 
 (require 'flycheck)
 
@@ -152,10 +119,6 @@
 (global-set-key (kbd "C-l") 'windmove-right)
 
 (require 'python-django)
-
-
-(set-face-attribute 'default nil :font "-unknown-Input Mono-normal-r-normal-*-9-*-*-*-*-*-iso10646-1")
-
 (require 'highlight-parentheses)
 (define-globalized-minor-mode global-highlight-parentheses-mode highlight-parentheses-mode
   (lambda nil (highlight-parentheses-mode t)))
@@ -192,35 +155,12 @@
 
 (global-evil-visualstar-mode)
 
-
-;(load-file "~/.emacs.d/ps-ccrypt.el")
-;(require 'ps-ccrypt "ps-ccrypt.el")
 (require 'ps-ccrypt)
 
 
 (setq org-log-into-drawer t)
 (setq org-todo-keywords
       '((sequence "TODO(t!)" "HOLD(h@/!)" "|" "DONE(d!)" "|" "LOG(l!)")))
-
-
-;; (defvar org-created-property-name "CREATED"
-;;   "The name of the org-mode property that stores the creation date of the entry")
-;; 
-;; (defun org-set-created-property (&optional active NAME)
-;;   "Set a property on the entry giving the creation time.
-;; 
-;; By default the property is called CREATED. If given the `NAME'
-;; argument will be used instead. If the property already exists, it
-;; will not be modified."
-;;   (interactive)
-;;   (let* ((created (or NAME org-created-property-name))
-;;          (fmt (if active "<%s>" "[%s]"))
-;;          (now  (format fmt (format-time-string "%Y-%m-%d %a %H:%M"))))
-;;     (unless (org-entry-get (point) created nil)
-;;       (org-set-property created now))))
-;; 
-;; (add-hook 'org-capture-before-finalize-hook #'org-set-created-property)
-
 
 (require 'epa-file)
 (epa-file-enable)
@@ -229,23 +169,4 @@
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
-
-
-;; (setq org-trello-consumer-key "179502231be7744ef4465838cf40f7de")
-;; (setq org-trello-access-token "5fdb251a09074e5cdf0101df8e1d718b823f6eafd7e4f48cae3d861b8f81b9f3")
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (ps-ccrypt python-django iedit highlight-parentheses helm-projectile haskell-mode flycheck evil-visual-mark-mode evil-magit elpy))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
 

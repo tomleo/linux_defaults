@@ -141,12 +141,6 @@ if [ -d "$HOME/.local/bin" ]; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-# Android SDK
-export PATH=$PATH:/usr/local/android-sdk-linux/
-export PATH=$PATH:/usr/local/android-sdk-linux/tools
-export PATH=$PATH:/usr/local/android-sdk-linux/platform-tools
-export PATH=$PATH:/usr/local/android-sdk-linux/build-tools
-
 export GOPATH=$HOME/gopath
 export PATH=$GOPATH:$GOPATH/bin:$PATH
 
