@@ -33,6 +33,21 @@ NeoBundle 'vim-scripts/restore_view.vim'
 NeoBundle 'vim-scripts/SeeTab'
 NeoBundle 'tpope/vim-fireplace.git'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'rhysd/nyaovim-popup-tooltip'
+NeoBundle 'Shougo/deoplete.nvim'
+NeoBundle 'lukerandall/haskellmode-vim'
+NeoBundle 'eagletmt/neco-ghc'
+NeoBundle 'eagletmt/ghcmod-vim'
+NeoBundle 'Shougo/vimproc.vim', {
+	      \   'build' : {
+	      \     'windows' : 'tools\\update-dll-mingw',
+	      \     'cygwin' : 'make -f make_cygwin.mak',
+	      \     'mac' : 'make -f make_mac.mak',
+	      \     'linux' : 'make',
+	      \     'unix' : 'gmake',
+	      \   }
+	      \ }
+
 
 call neobundle#end()
 
@@ -122,12 +137,16 @@ nnoremap <A-l> <C-w>l
 
     syntax on
     set t_Co=256
-    
+
+    " nvim-qt specific setting
+    " Guifont Input Mono:h8
+
     " Base16 Settings
     let base16colorspace=256 " Access colors present in 256 colorspace
     set background=dark
 
-    set guifont=Inconsolata\ Medium\ 9
+    " set guifont=Inconsolata\ Medium\ 9
+    set guifont=Input\ Mono\ 8
     "set guifont=DejaVu\ Sans\ Mono\ 9
     "set guifont=Anonymous_Pro:h11
     "set guifont=Anonymous\ Pro\ 9
@@ -274,4 +293,13 @@ map <Right> <c-w>l<c-w>_<c-w><Bar>
 
 " Insert tabs with Shift-tab
 inoremap <S-Tab> <C-V><Tab>
+
+" Haskell
+au BufEnter *.hs compiler ghc
+autocmd BufWritePost *.hs GhcModCheckAndLintAsync
+
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
+let g:haddock_browser = "/usr/bin/google-chrome"
+
 
