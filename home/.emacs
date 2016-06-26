@@ -1,7 +1,7 @@
 (setq-default indent-tabs-mode nil)
 
 (tool-bar-mode 0) ;; Hide Toolbar
-(menu-bar-mode 0) ;; Hide Menu
+(menu-bar-mode 1) ;; Show Menu
 (scroll-bar-mode -1) ;; Hide Scrollbar
 
 (require 'package) ;; You might already have this line
@@ -51,39 +51,6 @@
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((python . t)))
-
-
-;; (setq org-publish-project-alist
-;;       '(
-;; 
-;;    ("org-tom"
-;;           ;; Path to your org files.
-;;           :base-directory "/home/tom/hacking/org-jekyll-site/org/"
-;;           :base-extension "org"
-;; 
-;;           ;; Path to your Jekyll project.
-;;           :publishing-directory "/home/tom/hacking/org-jekyll-site/org/jekyll"
-;;           :recursive t
-;;           :publishing-function org-publish-org-to-html
-;;           :headline-levels 4 
-;;           :html-extension "html"
-;;           :body-only t ;; Only export section between <body> </body>
-;;     )
-;; 
-;; 
-;;     ("org-static-tom"
-;;           :base-directory "/home/tom/hacking/org-jekyll-site/org/"
-;;           :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf\\|php"
-;;           :publishing-directory "/home/tom/hacking/org-jekyll-site/"
-;;           :recursive t
-;;           :publishing-function org-publish-attachment)
-;; 
-;;     ("tom" :components ("org-tom" "org-static-tom"))
-;; 
-;; ))        
-
-
-
 
 (require 'flycheck)
 
@@ -152,10 +119,6 @@
 (global-set-key (kbd "C-l") 'windmove-right)
 
 (require 'python-django)
-
-
-;; (set-face-attribute 'default nil :font "-unknown-Input Mono-normal-r-normal-*-9-*-*-*-*-*-iso10646-1")
-
 (require 'highlight-parentheses)
 (define-globalized-minor-mode global-highlight-parentheses-mode highlight-parentheses-mode
   (lambda nil (highlight-parentheses-mode t)))
@@ -192,10 +155,7 @@
 
 (global-evil-visualstar-mode)
 
-
-(load-file "~/.emacs.d/ps-ccrypt.el")
-(require 'ps-ccrypt "ps-ccrypt.el")
-
+(require 'ps-ccrypt)
 
 
 (setq org-log-into-drawer t)
@@ -239,13 +199,6 @@
 
 ;; org-trello major mode for all .trello files
 (add-to-list 'auto-mode-alist '("\\.trello$" . org-mode))
-
-;; add a hook function to check if this is trello file, then activate the org-trello minor mode.
-;;(Add-hook 'org-mode-hook
-;;          (lambda ()
-;;            (let ((filename (buffer-file-name (current-buffer))))
-;;              (when (and filename (string= "trello" (file-name-extension filename)))
-;;              (org-trello-mode)))))
 
 (eval-after-load "haskell-mode"
     '(define-key haskell-mode-map (kbd "C-c C-c") 'haskell-compile))

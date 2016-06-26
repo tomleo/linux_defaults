@@ -34,6 +34,7 @@ NeoBundle 'vim-scripts/SeeTab'
 NeoBundle 'tpope/vim-fireplace.git'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'rhysd/nyaovim-popup-tooltip'
+NeoBundle 'rhysd/nyaovim-markdown-preview'
 NeoBundle 'Shougo/deoplete.nvim'
 NeoBundle 'lukerandall/haskellmode-vim'
 NeoBundle 'eagletmt/neco-ghc'
@@ -286,10 +287,10 @@ set viewoptions=cursor,folds,slash,unix
     set expandtab		" always uses spaces instead of tab characters
 
 "====[ Window Resize ]===="
-map <Up> <c-w>k<c-w>_<c-w><Bar>
-map <Down> <c-w>j<c-w>_<c-w><Bar>
-map <Left> <c-w>h<c-w>_<c-w><Bar>
-map <Right> <c-w>l<c-w>_<c-w><Bar>
+nnoremap <D-left> :vertical resize -5<cr>
+nnoremap <D-down> :resize +5<cr>
+nnoremap <D-up> :resize -5<cr>
+nnoremap <D-right> :vertical resize +5<cr>
 
 " Insert tabs with Shift-tab
 inoremap <S-Tab> <C-V><Tab>
