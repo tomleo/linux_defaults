@@ -188,17 +188,8 @@
  )
 
 
-;; Trello
-; (require 'org-trello)
-; (custom-set-variables '(org-trello-files '("/home/tom/hacking/lists2")))
-; (setq org-trello-consumer-key "179502231be7744ef4465838cf40f7de")  ;; 32 characters string
-; (setq org-trello-access-token "2fcd9838d1208d0ab46b698319fe851eb821c2b179070f4cceab747da401df0b")  ;; 64 characters string
-
-
-
 ; (vimish-fold-global-mode 1)
 (evil-vimish-fold-mode 1)
-
 
 
 (add-hook 'markdown-mode #'hs-minor-mode)
