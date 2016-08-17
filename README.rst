@@ -32,3 +32,15 @@ Powerlines
 Basically followed the steps here http://askubuntu.com/a/283909
 or use fish shell
 
+Git
+---
+
+.. code-block:: cmd
+
+    sudo ln -s ~/hacking/linux_defaults/bin/git-merged-branches /usr/local/bin/git-merged-branches
+
+In ``.gitconfig`` add the following line::
+
+    [alias]
+        merged-branches = !git-merged-branches
+

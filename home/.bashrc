@@ -146,3 +146,13 @@ export PATH=$GOPATH:$GOPATH/bin:$PATH
 
 alias edit='vim -c "cd $(pwd)"'
 alias music=ncmpc
+
+export NVM_DIR="/home/tom/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# export ANDROID_HOME="/media/vault02/android-studio"
+export ANDROID_HOME="/media/vault02/ANDROID_HOME/Sdk"
+export JAVA_HOME="/media/vault02/JAVA_HOME/jdk1.8.0_91"
+
+export PATH=${PATH}:/media/vault02/ANDROID_HOME/Sdk/platform-tools/:/media/vault02/ANDROID_HOME/Sdk/tools
+

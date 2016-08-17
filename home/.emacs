@@ -138,6 +138,7 @@
   (condition-case nil (elpy-goto-definition)
     (error (elpy-rgrep-symbol (thing-at-point 'symbol)))))
 
+(set-face-attribute 'default nil :height 75)
 ;; (define-key elpy-mode-map (kbd "M-.") 'goto-def-or-rgrep)
 ;; TODO: get this working again
 
@@ -170,3 +171,34 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
 
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(markdown-command "/usr/bin/pandoc")
+ '(package-selected-packages
+   (quote
+    (websocket ein w3m evil-vimish-fold vimish-fold markdown-mode python-django ps-ccrypt iedit highlight-parentheses helm-projectile haskell-mode flycheck evil-visualstar evil-visual-mark-mode evil-magit elpy dash-functional))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+
+
+;; Trello
+; (require 'org-trello)
+; (custom-set-variables '(org-trello-files '("/home/tom/hacking/lists2")))
+; (setq org-trello-consumer-key "179502231be7744ef4465838cf40f7de")  ;; 32 characters string
+; (setq org-trello-access-token "2fcd9838d1208d0ab46b698319fe851eb821c2b179070f4cceab747da401df0b")  ;; 64 characters string
+
+
+
+; (vimish-fold-global-mode 1)
+(evil-vimish-fold-mode 1)
+
+
+
+(add-hook 'markdown-mode #'hs-minor-mode)

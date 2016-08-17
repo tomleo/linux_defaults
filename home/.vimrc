@@ -35,6 +35,7 @@ NeoBundle 'tpope/vim-fireplace.git'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'rhysd/nyaovim-popup-tooltip'
 NeoBundle 'rhysd/nyaovim-markdown-preview'
+NeoBundle 'equalsraf/neovim-gui-shim'
 
 call neobundle#end()
 

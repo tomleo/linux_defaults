@@ -1,80 +1,81 @@
 [global_config]
-  enabled_plugins = ActivityWatch, LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
   always_split_with_profile = True
-  title_transmit_fg_color = "#636e73"
+  enabled_plugins = ActivityWatch, LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
+  inactive_color_offset = 1.0
   suppress_multiple_term_dialog = True
   title_transmit_bg_color = "#fafafa"
-  inactive_color_offset = 1.0
+  title_transmit_fg_color = "#636e73"
 [keybindings]
+  close_window = None
+  cycle_next = <Alt><Super>l
   cycle_prev = <Alt><Super>h
+  go_down = <Primary><Shift>j
+  go_left = <Primary><Shift>h
+  go_right = <Primary><Shift>l
   go_up = <Primary><Shift>k
   next_tab = <Primary>Page_Up
-  split_horiz = <Primary><Shift>s
   prev_tab = <Primary>Page_Down
-  go_down = <Primary><Shift>j
-  cycle_next = <Alt><Super>l
+  split_horiz = <Primary><Shift>s
   split_vert = <Primary><Shift>y
-  go_right = <Primary><Shift>l
-  go_left = <Primary><Shift>h
-[profiles]
-  [[default]]
-    palette = "#212121:#b7141f:#457b24:#f6981e:#134eb2:#560088:#0e717c:#efefef:#424242:#e83b3f:#7aba3a:#ffea2e:#54a4f3:#aa4dbc:#26bbd1:#d9d9d9"
-    background_image = None
-    use_system_font = False
-    cursor_color = "#16afca"
-    foreground_color = "#e5e5e5"
-    font = Input Mono 8
-    background_color = "#232322"
-    scrollback_infinite = True
 [layouts]
   [[default]]
     [[[child1]]]
-      type = Terminal
       parent = window0
+      type = Terminal
     [[[window0]]]
-      type = Window
       parent = ""
+      type = Window
   [[sage]]
     [[[child0]]]
-      position = 0:25
-      type = Window
       order = 0
       parent = ""
+      position = 0:25
       size = 1920, 1004
+      type = Window
     [[[child1]]]
-      position = 502
-      type = VPaned
       order = 0
       parent = child0
+      position = 502
+      type = VPaned
     [[[child2]]]
-      position = 960
-      type = HPaned
       order = 0
       parent = child1
+      position = 960
+      type = HPaned
     [[[child5]]]
-      position = 960
-      type = HPaned
       order = 1
       parent = child1
+      position = 960
+      type = HPaned
     [[[terminal3]]]
-      profile = Smyck
-      type = Terminal
-      order = 0
-      parent = child2
       command = ""
-    [[[terminal4]]]
+      order = 0
+      parent = child2
       profile = Smyck
       type = Terminal
+    [[[terminal4]]]
       order = 1
       parent = child2
-    [[[terminal7]]]
       profile = Smyck
       type = Terminal
-      order = 1
-      parent = child5
     [[[terminal6]]]
-      profile = Smyck
-      type = Terminal
       order = 0
       parent = child5
+      profile = Smyck
+      type = Terminal
+    [[[terminal7]]]
+      order = 1
+      parent = child5
+      profile = Smyck
+      type = Terminal
 [plugins]
+[profiles]
+  [[default]]
+    background_color = "#002b36"
+    background_image = None
+    cursor_color = "#16afca"
+    font = Input Mono 8
+    foreground_color = "#839496"
+    palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
+    scrollback_infinite = True
+    use_system_font = False
